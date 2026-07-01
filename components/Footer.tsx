@@ -1,84 +1,57 @@
-import Link from 'next/link'
+const FORUM_URL = 'https://forum.cryptovelt.cloud'
+const LEARN_URL = 'https://learn.cryptovelt.cloud'
+
+const links = [
+  { label: 'פורום', href: FORUM_URL },
+  { label: 'לימוד', href: LEARN_URL },
+  { label: 'חדשות', href: '#', soon: true },
+  { label: 'משחק', href: '#', soon: true },
+  { label: 'כלים', href: '#', soon: true },
+  { label: 'ארנק', href: '#', soon: true },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-900 text-gray-300 mt-16">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 text-xl font-bold text-white mb-4">
-              <span className="text-gold-400 text-2xl">₿</span>
-              <span>קריפטוVelt</span>
-            </div>
-            <p className="text-sm leading-relaxed">
-              הפלטפורמה החינוכית המובילה להבנת עולם הקריפטו,
-              עבור הקהילה החרדית בישראל.
-            </p>
+    <footer dir="rtl" className="bg-gray-950 text-gray-400 mt-0">
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        {/* Brand + links row */}
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 mb-8">
+          <div className="flex items-center gap-2 text-white font-bold text-lg">
+            <span className="text-gold-400 text-xl">₿</span>
+            <span>קריפטו וועלט</span>
           </div>
 
-          {/* Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">מדריכים</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/bitcoin" className="hover:text-gold-400 transition-colors">מה זה ביטקוין?</Link></li>
-              <li><Link href="/blockchain" className="hover:text-gold-400 transition-colors">מה זה בלוקצ׳יין?</Link></li>
-              <li><Link href="/wallet" className="hover:text-gold-400 transition-colors">איך עובד ארנק דיגיטלי?</Link></li>
-              <li><Link href="/investment" className="hover:text-gold-400 transition-colors">מה זה השקעה בקריפטו?</Link></li>
-              <li><Link href="/buy-crypto" className="hover:text-gold-400 transition-colors">איך קונים קריפטו בבטחה?</Link></li>
-            </ul>
-          </div>
+          <nav className="flex flex-wrap items-center justify-center gap-4 text-sm">
+            {links.map((l) => (
+              l.soon ? (
+                <span key={l.label} className="text-gray-600">{l.label}</span>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {l.label}
+                </a>
+              )
+            ))}
+          </nav>
 
-          {/* Community */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">קהילה</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://forum.cryptovelt.cloud"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gold-400 transition-colors"
-                >
-                  💬 פורום קהילה
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://forum.cryptovelt.cloud/category/42/%D7%A9%D7%90%D7%9C%D7%95%D7%AA-%D7%9C%D7%9E%D7%AA%D7%97%D7%99%D7%9C%D7%99%D7%9D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gold-400 transition-colors"
-                >
-                  שאלות למתחילים
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://forum.cryptovelt.cloud/category/7/%D7%91%D7%99%D7%98%D7%A7%D7%95%D7%99%D7%9F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gold-400 transition-colors"
-                >
-                  ביטקוין
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Disclaimer */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">הצהרה</h3>
-            <p className="text-sm leading-relaxed">
-              המידע באתר זה הוא למטרות חינוכיות בלבד.
-              אין באמור ייעוץ פיננסי או המלצה להשקעה.
-              תמיד התייעץ עם מומחה מוסמך לפני קבלת החלטות פיננסיות.
-            </p>
+          <div className="flex items-center gap-4 text-sm">
+            <a href="#" className="hover:text-white transition-colors">וואטסאפ</a>
+            <span className="text-gray-700">|</span>
+            <a href="#" className="hover:text-white transition-colors">טלגרם</a>
+            <span className="text-gray-700">|</span>
+            <a href="mailto:info@cryptovelt.cloud" className="hover:text-white transition-colors">אימייל</a>
           </div>
         </div>
 
-        <div className="border-t border-brand-700 mt-8 pt-8 text-center text-sm">
-          <p>© 2026 קריפטוVelt — כל הזכויות שמורות</p>
+        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+          <p>© 2026 קריפטו וועלט — כל הזכויות שמורות</p>
+          <p className="text-center">נבנה בהתאם להלכה ובאישור רבנים</p>
+          <p className="text-center">מידע חינוכי בלבד — אינו ייעוץ פיננסי</p>
         </div>
       </div>
     </footer>
