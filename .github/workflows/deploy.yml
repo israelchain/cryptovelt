@@ -1,13 +1,20 @@
-name: Deploy to Vercel
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,22 +28,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build static export
         run: npm run build
+        env:
+          # Remove this env var once a custom domain is configured —
+          # the site will then serve from the domain root and basePath is not needed.
+          NEXT_PUBLIC_BASE_PATH: /cryptovelt
 
-      - name: Deploy to Vercel (Production)
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: amondnet/vercel-action@v25
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          path: out/
 
-      - name: Deploy Preview
-        if: github.event_name == 'pull_request'
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
