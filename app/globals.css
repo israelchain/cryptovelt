@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@400;700&display=swap');
+
+:root {
+  --font-hebrew: 'Assistant', 'Frank Ruhl Libre', 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+  direction: rtl;
+  font-family: var(--font-hebrew);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* RTL-aware utilities */
+.prose-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.prose-rtl h1,
+.prose-rtl h2,
+.prose-rtl h3 {
+  text-align: right;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+/* Highlight boxes */
+.highlight-box {
+  @apply bg-brand-50 border-r-4 border-brand-500 p-4 my-4 rounded-lg;
+}
+
+.warning-box {
+  @apply bg-amber-50 border-r-4 border-amber-500 p-4 my-4 rounded-lg;
+}
