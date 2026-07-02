@@ -80,13 +80,13 @@ export default function CryptoPriceWidget() {
       dir="rtl"
       lang="he"
       aria-label="מחירי מטבעות קריפטו"
-      className="bg-white border border-slate-200 rounded-2xl p-6 max-w-2xl mx-auto shadow-sm"
+      className="glass-strong rounded-3xl p-6 max-w-2xl mx-auto shadow-card"
     >
       {/* Header */}
       <div className="flex items-center gap-3 mb-5 flex-wrap">
-        <h3 className="text-xl font-bold text-slate-900 flex-1">מחירי קריפטו בזמן אמת</h3>
+        <h3 className="text-xl font-bold text-white flex-1">מחירי קריפטו בזמן אמת</h3>
         {lastUpdated && (
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-slate-500">
             עודכן: {lastUpdated.toLocaleTimeString('he-IL')}
           </span>
         )}
@@ -95,7 +95,7 @@ export default function CryptoPriceWidget() {
           disabled={fetching}
           title="רענן מחירים"
           aria-label="רענן מחירים"
-          className="border border-slate-300 rounded-lg px-3 py-1 text-base hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="border border-white/15 rounded-lg px-3 py-1 text-base hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {fetching ? '⏳' : '🔄'}
         </button>
@@ -103,14 +103,14 @@ export default function CryptoPriceWidget() {
 
       {/* Error */}
       {error && (
-        <p role="alert" className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm mb-4">
+        <p role="alert" className="bg-red-500/10 border border-red-400/30 text-red-300 rounded-lg px-4 py-3 text-sm mb-4">
           {error}
         </p>
       )}
 
       {/* Initial loading */}
       {fetching && !prices && (
-        <p className="text-center text-slate-400 py-8">טוען מחירים...</p>
+        <p className="text-center text-slate-500 py-8">טוען מחירים...</p>
       )}
 
       {/* Price table */}
@@ -118,11 +118,11 @@ export default function CryptoPriceWidget() {
         <div
           role="table"
           aria-label="טבלת מחירי מטבעות"
-          className="rounded-xl overflow-hidden border border-slate-200 mb-5"
+          className="rounded-2xl overflow-hidden border border-white/10 mb-5"
         >
           <div
             role="row"
-            className="grid grid-cols-[2fr_1.5fr_1.5fr_1fr] bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-500 border-b border-slate-200 text-right"
+            className="grid grid-cols-[2fr_1.5fr_1.5fr_1fr] bg-white/5 px-4 py-2 text-xs font-semibold text-slate-400 border-b border-white/10 text-right"
           >
             <span role="columnheader">מטבע</span>
             <span role="columnheader">מחיר USD</span>
@@ -139,23 +139,23 @@ export default function CryptoPriceWidget() {
               <div
                 key={coin.id}
                 role="row"
-                className="grid grid-cols-[2fr_1.5fr_1.5fr_1fr] px-4 py-3 border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors items-center text-right"
+                className="grid grid-cols-[2fr_1.5fr_1.5fr_1fr] px-4 py-3 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors items-center text-right"
               >
                 <span role="cell" className="flex flex-col gap-0.5">
-                  <strong className="text-sm text-slate-900">{coin.hebrewName}</strong>
-                  <span className="text-xs text-slate-400 font-medium">{coin.symbol}</span>
+                  <strong className="text-sm text-white">{coin.hebrewName}</strong>
+                  <span className="text-xs text-slate-500 font-medium">{coin.symbol}</span>
                 </span>
-                <span role="cell" className="text-sm font-semibold text-slate-700 tabular-nums">
+                <span role="cell" className="text-sm font-semibold text-slate-200 tabular-nums">
                   {fmtUSD(d.usd)}
                 </span>
-                <span role="cell" className="text-sm font-semibold text-slate-700 tabular-nums">
+                <span role="cell" className="text-sm font-semibold text-slate-200 tabular-nums">
                   {fmtILS(d.ils)}
                 </span>
                 <span
                   role="cell"
                   aria-label={`שינוי של ${fmtChange(change)} ב-24 שעות`}
                   className={`text-sm font-semibold rounded px-2 py-0.5 text-center tabular-nums ${
-                    isUp ? 'text-green-700 bg-green-50' : 'text-red-700 bg-red-50'
+                    isUp ? 'text-green-300 bg-green-500/10' : 'text-red-300 bg-red-500/10'
                   }`}
                 >
                   {fmtChange(change)}
@@ -167,41 +167,41 @@ export default function CryptoPriceWidget() {
       )}
 
       {/* Educational explainer */}
-      <details className="border border-slate-200 rounded-xl mb-4 overflow-hidden">
-        <summary className="px-4 py-3 text-sm font-semibold text-brand-600 cursor-pointer bg-brand-50 select-none">
+      <details className="border border-white/10 rounded-2xl mb-4 overflow-hidden">
+        <summary className="px-4 py-3 text-sm font-semibold text-brand-300 cursor-pointer bg-white/5 select-none hover:bg-white/10 transition-colors">
           מה המחירים האלה אומרים? לחץ להסבר
         </summary>
-        <div className="px-5 py-4 text-sm leading-relaxed text-slate-600 space-y-3 bg-white">
+        <div className="px-5 py-4 text-sm leading-relaxed text-slate-400 space-y-3">
           <p>
-            <strong className="text-slate-800">מה זה מחיר קריפטו?</strong>{' '}
+            <strong className="text-slate-200">מה זה מחיר קריפטו?</strong>{' '}
             מטבעות דיגיטליים כמו ביטקוין ואת׳ריום נסחרים בשווקים גלובליים פתוחים,
             בדיוק כמו מניות בבורסה. המחיר נקבע על ידי ההיצע והביקוש של מיליוני קונים
             ומוכרים ברחבי העולם.
           </p>
           <p>
-            <strong className="text-slate-800">למה המחיר משתנה כל הזמן?</strong>{' '}
+            <strong className="text-slate-200">למה המחיר משתנה כל הזמן?</strong>{' '}
             שוק הקריפטו פועל 24/7 ללא הפסקה, ואין לו בנק מרכזי שמייצב את הערך.
             חדשות כלכליות, החלטות רגולטוריות, ורמת האמון הציבורית משפיעים ישירות
             על המחיר. תנודתיות זו היא מאפיין בסיסי של הטכנולוגיה, לא תקלה.
           </p>
           <p>
-            <strong className="text-slate-800">ILS — שקל ישראלי:</strong>{' '}
+            <strong className="text-slate-200">ILS — שקל ישראלי:</strong>{' '}
             המחיר בשקלים מחושב לפי שער ההמרה הנוכחי של CoinGecko ומעודכן בזמן אמת.
           </p>
-          <p className="bg-amber-50 border-r-4 border-amber-400 px-3 py-2 rounded-r text-amber-800 text-xs">
+          <p className="bg-gold-500/10 border-s-4 border-gold-500 px-3 py-2 rounded-e text-gold-200 text-xs">
             המידע לצרכי לימוד בלבד ואינו ייעוץ השקעות. מחירי קריפטו תנודתיים מאוד ועלולים לרדת בחדות.
           </p>
         </div>
       </details>
 
       {/* Source attribution */}
-      <p className="text-center text-xs text-slate-400">
+      <p className="text-center text-xs text-slate-500">
         נתונים:{' '}
         <a
           href="https://www.coingecko.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-brand-500 hover:underline"
+          className="text-brand-400 hover:underline"
         >
           CoinGecko
         </a>
