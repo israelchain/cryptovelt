@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ArticlePage from '@/components/ArticlePage'
 
 export const metadata: Metadata = {
-  title: 'איך קונים קריפטו בבטחה? — קריפטוVelt',
+  title: 'איך קונים קריפטו בבטחה? — קריפטו וועלט',
   description: 'מדריך מעשי לרכישת קריפטו ראשונה — בורסות, אמצעי תשלום, אבטחה ואיך להימנע מהונאות.',
 }
 

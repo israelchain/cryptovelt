@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ArticlePage from '@/components/ArticlePage'
 
 export const metadata: Metadata = {
-  title: 'מה זה ביטקוין? — קריפטוVelt',
+  title: 'מה זה ביטקוין? — קריפטו וועלט',
   description: 'הסבר מקיף על ביטקוין בעברית — מה זה, איך זה עובד, מי המציא אותו ולמה זה שונה מכסף רגיל.',
 }
 

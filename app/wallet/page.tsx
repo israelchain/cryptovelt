@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ArticlePage from '@/components/ArticlePage'
 
 export const metadata: Metadata = {
-  title: 'איך עובד ארנק דיגיטלי? — קריפטוVelt',
+  title: 'איך עובד ארנק דיגיטלי? — קריפטו וועלט',
   description: 'הסבר מקיף על ארנקי קריפטו בעברית — סוגי ארנקים, מפתחות ציבוריים ופרטיים, וכיצד לשמור על הביטקוין שלך בבטחה.',
 }
 
