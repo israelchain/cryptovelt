@@ -2,11 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@400;600;700&display=swap');
 
+/* ── Design tokens ─────────────────────────────────────────────
+   Light theme inspired by bitcoin.com: white canvas, bold ink
+   typography, bitcoin-orange + sky accents, soft floating cards. */
 :root {
   --font-hebrew: 'Heebo', 'Assistant', 'Segoe UI', Arial, sans-serif;
   --font-display: 'Frank Ruhl Libre', 'Heebo', serif;
+
+  /* Canvas & surfaces */
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-border: #e6eaf2;
+  --color-border-strong: #d7dde9;
+
+  /* Ink (text) */
+  --color-ink: #0b1426;
+  --color-ink-soft: #3d4a63;
+  --color-ink-muted: #64748b;
+  --color-ink-faint: #94a3b8;
+
+  /* Accents */
+  --color-orange: #f7931a;      /* bitcoin orange */
+  --color-orange-deep: #e07f0a;
+  --color-orange-soft: #fff3e2;
+  --color-sky: #0ea5e9;
+  --color-sky-soft: #e8f6fe;
+  --color-violet: #8b5cf6;
+  --color-violet-soft: #f1ebfe;
+  --color-green: #0ac18e;
+  --color-green-soft: #e6faf4;
+
+  /* Elevation */
+  --shadow-card: 0 2px 8px rgba(11, 20, 38, 0.05), 0 12px 32px -12px rgba(11, 20, 38, 0.12);
+  --shadow-card-hover: 0 4px 12px rgba(11, 20, 38, 0.06), 0 24px 48px -16px rgba(11, 20, 38, 0.18);
+  --shadow-orange: 0 12px 32px -10px rgba(247, 147, 26, 0.5);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -16,67 +52,78 @@ html {
 }
 
 body {
-  background-color: #070b16;
-  color: #cbd5e1;
+  background-color: var(--color-bg);
+  color: var(--color-ink-soft);
   min-height: 100vh;
 }
 
 ::selection {
-  background: rgba(247, 197, 72, 0.35);
-  color: #fff;
+  background: rgba(247, 147, 26, 0.25);
+  color: var(--color-ink);
 }
 
-/* ── Night canvas: layered glows + faint grid, fixed behind everything ── */
-.night-canvas {
+/* ── Light canvas: soft pastel auras + faint grid, fixed behind everything ── */
+.light-canvas {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 45% at 78% -5%, rgba(124, 58, 237, 0.16), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 15% 10%, rgba(14, 165, 233, 0.13), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 50% 108%, rgba(234, 168, 32, 0.07), transparent 60%),
-    #070b16;
+    radial-gradient(ellipse 55% 45% at 80% -8%, rgba(247, 147, 26, 0.09), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 12% 8%, rgba(14, 165, 233, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 110%, rgba(139, 92, 246, 0.06), transparent 60%),
+    var(--color-bg);
 }
 
-.night-canvas::after {
+.light-canvas::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(11, 20, 38, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 20, 38, 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 25%, transparent 75%);
 }
 
-/* ── Glass surfaces ── */
-.glass {
-  background: rgba(17, 26, 46, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+/* ── Surfaces ── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
 }
 
-.glass-strong {
-  background: rgba(11, 17, 32, 0.75);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+.card-hover {
+  transition: transform 0.35s var(--ease-out-soft), box-shadow 0.35s var(--ease-out-soft), border-color 0.35s;
 }
 
-/* Gradient hairline border (double-background trick) */
-.border-gradient {
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* Frosted white glass (navbar) */
+.glass-light {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+/* Gradient hairline border on white (double-background trick) */
+.border-gradient-light {
   border: 1px solid transparent;
   background:
-    linear-gradient(rgba(13, 20, 38, 0.92), rgba(13, 20, 38, 0.92)) padding-box,
-    linear-gradient(135deg, rgba(247, 197, 72, 0.55), rgba(139, 92, 246, 0.35), rgba(56, 189, 248, 0.45)) border-box;
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(247, 147, 26, 0.7), rgba(139, 92, 246, 0.4), rgba(14, 165, 233, 0.6)) border-box;
+  box-shadow: var(--shadow-card);
 }
 
 /* ── Gradient text ── */
-.text-gradient-gold {
-  background: linear-gradient(120deg, #fde9b8 0%, #f7c548 30%, #eaa820 55%, #fcd97d 80%, #fde9b8 100%);
+.text-gradient-orange {
+  background: linear-gradient(120deg, #f7931a 0%, #ffb347 30%, #e07f0a 55%, #ffc36e 80%, #f7931a 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -85,7 +132,7 @@ body {
 }
 
 .text-gradient-sky {
-  background: linear-gradient(120deg, #7dd3fc, #a78bfa 60%, #38bdf8);
+  background: linear-gradient(120deg, #0284c7, #8b5cf6 60%, #0ea5e9);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -94,21 +141,105 @@ body {
 
 /* ── Section kicker label ── */
 .kicker {
-  @apply inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gold-400 uppercase;
+  @apply inline-flex items-center gap-2 text-xs font-bold tracking-widest text-btc-600 uppercase;
 }
 
 .kicker::before {
   content: '';
   width: 2rem;
   height: 1px;
-  background: linear-gradient(to left, rgba(247, 197, 72, 0.8), transparent);
+  background: linear-gradient(to left, rgba(247, 147, 26, 0.8), transparent);
+}
+
+/* ── 3D coin ─────────────────────────────────────────────
+   Pure-CSS spinning bitcoin: a disc rotating on the Y axis
+   inside a perspective stage, with stacked pseudo-layers
+   faking the coin's edge thickness. */
+.coin-stage {
+  perspective: 900px;
+}
+
+.coin-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: coin-spin 7s linear infinite;
+}
+
+.coin-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 32% 28%, #ffd9a0 0%, #f7931a 45%, #d97706 100%);
+  box-shadow:
+    inset 0 0 0 6px rgba(255, 255, 255, 0.35),
+    inset 0 0 24px rgba(120, 53, 15, 0.35);
+  backface-visibility: hidden;
+  font-weight: 900;
+  color: #7c2d12;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.coin-face--back {
+  transform: rotateY(180deg);
+}
+
+/* Edge slices between the two faces */
+.coin-3d::before,
+.coin-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #b45309;
+}
+
+.coin-3d::before { transform: translateZ(-2px); }
+.coin-3d::after  { transform: translateZ(-4px); }
+
+.coin-shadow {
+  position: absolute;
+  bottom: -18%;
+  left: 50%;
+  width: 70%;
+  height: 12%;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: radial-gradient(ellipse, rgba(11, 20, 38, 0.22), transparent 70%);
+  animation: coin-shadow 7s linear infinite;
+}
+
+@keyframes coin-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+@keyframes coin-shadow {
+  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.9; }
+  25%, 75% { transform: translateX(-50%) scaleX(0.55); opacity: 0.55; }
+  50%      { transform: translateX(-50%) scaleX(1); opacity: 0.9; }
+}
+
+/* ── 3D tilt on hover for cards ── */
+.tilt-3d {
+  transition: transform 0.4s var(--ease-out-soft), box-shadow 0.4s var(--ease-out-soft);
+  transform-style: preserve-3d;
+}
+
+.tilt-3d:hover {
+  transform: perspective(800px) rotateX(3deg) rotateY(-3deg) translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* ── Scroll reveal (progressive: hidden only when JS is running) ── */
 .js .reveal {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s var(--ease-out-soft), transform 0.7s var(--ease-out-soft);
 }
 
 .js .reveal.revealed {
@@ -132,6 +263,9 @@ body {
     opacity: 1;
     transform: none;
   }
+  .coin-3d {
+    animation: none;
+  }
 }
 
 /* ── RTL-aware prose ── */
@@ -151,23 +285,23 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b1120;
+  background: var(--color-bg-soft);
 }
 ::-webkit-scrollbar-thumb {
-  background: #263353;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b4a70;
+  background: #94a3b8;
 }
 
-/* ── Highlight boxes (dark theme) ── */
+/* ── Highlight boxes (light theme) ── */
 .highlight-box {
   @apply border-s-4 border-brand-400 p-4 my-4 rounded-lg;
-  background: rgba(14, 165, 233, 0.08);
+  background: var(--color-sky-soft);
 }
 
 .warning-box {
-  @apply border-s-4 border-gold-500 p-4 my-4 rounded-lg;
-  background: rgba(234, 168, 32, 0.08);
+  @apply border-s-4 border-btc-500 p-4 my-4 rounded-lg;
+  background: var(--color-orange-soft);
 }

@@ -28,8 +28,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js')` }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-ink-900 text-slate-300 antialiased">
-        <div className="night-canvas" aria-hidden />
+      <body className="min-h-screen flex flex-col bg-white text-ink-600 antialiased">
+        <div className="light-canvas" aria-hidden />
         <Navbar />
         <main className="flex-1">
           {children}

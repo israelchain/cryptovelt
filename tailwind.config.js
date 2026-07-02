@@ -13,15 +13,15 @@ module.exports = {
         sans: ['Heebo', 'Assistant', 'sans-serif'],
       },
       colors: {
-        // Deep night-blue canvas
+        // Ink typography on white canvas
         ink: {
-          950: '#050810',
-          900: '#070b16',
-          800: '#0b1120',
-          700: '#111a2e',
-          600: '#1a2540',
-          500: '#263353',
-          400: '#3b4a70',
+          950: '#060b16',
+          900: '#0b1426',
+          800: '#16233d',
+          700: '#243352',
+          600: '#3d4a63',
+          500: '#64748b',
+          400: '#94a3b8',
         },
         brand: {
           50: '#f0f9ff',
@@ -35,21 +35,33 @@ module.exports = {
           800: '#075985',
           900: '#0c4a6e',
         },
-        gold: {
-          200: '#fde9b8',
-          300: '#fcd97d',
-          400: '#f7c548',
-          500: '#eaa820',
-          600: '#c98a10',
+        // Bitcoin orange scale
+        btc: {
+          50: '#fff8ef',
+          100: '#fff3e2',
+          200: '#ffe1b8',
+          300: '#ffc36e',
+          400: '#ffab3d',
+          500: '#f7931a',
+          600: '#e07f0a',
+          700: '#b96406',
+          800: '#934e08',
+          900: '#78410c',
+        },
+        mint: {
+          50: '#e6faf4',
+          400: '#2dd4a8',
+          500: '#0ac18e',
+          600: '#059f75',
         },
       },
       boxShadow: {
-        'glow-gold': '0 0 24px -4px rgba(247, 197, 72, 0.45)',
-        'glow-gold-lg': '0 8px 40px -6px rgba(247, 197, 72, 0.55)',
-        'glow-cyan': '0 0 30px -6px rgba(56, 189, 248, 0.4)',
-        'glow-violet': '0 0 30px -6px rgba(139, 92, 246, 0.4)',
-        'glow-green': '0 8px 40px -8px rgba(74, 222, 128, 0.45)',
-        card: '0 8px 32px -8px rgba(0, 0, 0, 0.5)',
+        card: '0 2px 8px rgba(11, 20, 38, 0.05), 0 12px 32px -12px rgba(11, 20, 38, 0.12)',
+        'card-hover': '0 4px 12px rgba(11, 20, 38, 0.06), 0 24px 48px -16px rgba(11, 20, 38, 0.18)',
+        'glow-orange': '0 12px 32px -10px rgba(247, 147, 26, 0.5)',
+        'glow-orange-lg': '0 16px 44px -8px rgba(247, 147, 26, 0.6)',
+        'glow-sky': '0 12px 32px -10px rgba(14, 165, 233, 0.4)',
+        'glow-green': '0 12px 32px -10px rgba(10, 193, 142, 0.5)',
       },
       keyframes: {
         float: {
@@ -68,9 +80,9 @@ module.exports = {
           from: { opacity: '0', transform: 'translateY(28px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 18px -4px rgba(247, 197, 72, 0.35)' },
-          '50%': { boxShadow: '0 0 34px -2px rgba(247, 197, 72, 0.65)' },
+        'pulse-soft': {
+          '0%, 100%': { boxShadow: '0 8px 24px -8px rgba(247, 147, 26, 0.35)' },
+          '50%': { boxShadow: '0 12px 40px -6px rgba(247, 147, 26, 0.6)' },
         },
       },
       animation: {
@@ -78,7 +90,7 @@ module.exports = {
         'float-slow': 'float-slow 12s ease-in-out infinite',
         shimmer: 'shimmer 5s linear infinite',
         'fade-up': 'fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both',
-        'pulse-glow': 'pulse-glow 3.5s ease-in-out infinite',
+        'pulse-soft': 'pulse-soft 3.5s ease-in-out infinite',
       },
     },
   },
