@@ -1,3 +1,4 @@
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const FORUM_URL = 'https://forum.cryptovelt.cloud'
 const LEARN_URL = 'https://learn.cryptovelt.cloud'
 
@@ -23,9 +24,7 @@ export default function Footer() {
           {/* Brand + links row */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
             <div className="flex items-center gap-2.5">
-              <span className="w-9 h-9 grid place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-black text-xl">
-                ₿
-              </span>
+              <img src={`${BASE_PATH}/brand/logo-symbol.svg`} alt="קריפטו וועלט" className="w-9 h-9" />
               <span className="font-display font-black text-lg text-ink-900">קריפטו וועלט</span>
             </div>
 

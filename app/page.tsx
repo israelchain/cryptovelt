@@ -1,4 +1,4 @@
-import CryptoPriceWidget from '@/components/CryptoPriceWidget'
+import CryptoTicker from '@/components/CryptoTicker'
 import Reveal from '@/components/Reveal'
 
 const FORUM_URL = 'https://forum.cryptovelt.cloud'
@@ -104,26 +104,31 @@ export default function HomePage() {
                 <span>התחל ללמוד בחינם</span>
               </a>
             </div>
+
+            {/* Mobile ticker (the side banner sits absolutely on desktop instead) */}
+            <div className="animate-fade-up [animation-delay:400ms] mt-8 flex justify-center md:hidden">
+              <CryptoTicker />
+            </div>
           </div>
 
           {/* Dashboard mock + floating coins (renders on the left in RTL) */}
-          <div className="relative h-[22rem] sm:h-[26rem] hidden sm:block" aria-hidden>
-            <div className="dash-mock-glow" />
+          <div className="relative h-[22rem] sm:h-[26rem] hidden sm:block">
+            <div className="dash-mock-glow" aria-hidden />
 
             {/* Floating 3D coins */}
-            <div className="coin-stage absolute -top-2 right-[8%] w-16 h-16 animate-float">
+            <div className="coin-stage absolute -top-2 right-[8%] w-16 h-16 animate-float" aria-hidden>
               <div className="coin-3d coin-3d--indigo text-2xl">
                 <div className="coin-face coin-face--indigo">₿</div>
                 <div className="coin-face coin-face--indigo coin-face--back">₿</div>
               </div>
             </div>
-            <div className="coin-stage absolute top-[38%] right-0 w-10 h-10 animate-float [animation-delay:-2.5s]">
+            <div className="coin-stage absolute top-[38%] right-0 w-10 h-10 animate-float [animation-delay:-2.5s]" aria-hidden>
               <div className="coin-3d coin-3d--indigo text-base">
                 <div className="coin-face coin-face--indigo">Ξ</div>
                 <div className="coin-face coin-face--indigo coin-face--back">Ξ</div>
               </div>
             </div>
-            <div className="coin-stage absolute bottom-4 right-[18%] w-20 h-20 animate-float [animation-delay:-4.5s]">
+            <div className="coin-stage absolute bottom-4 right-[18%] w-20 h-20 animate-float [animation-delay:-4.5s]" aria-hidden>
               <div className="coin-3d coin-3d--indigo text-3xl">
                 <div className="coin-face coin-face--indigo">◎</div>
                 <div className="coin-face coin-face--indigo coin-face--back">◎</div>
@@ -131,7 +136,7 @@ export default function HomePage() {
             </div>
 
             {/* Mini dashboard card */}
-            <div className="dash-mock absolute inset-x-6 top-8 bottom-8 p-5 flex flex-col gap-4">
+            <div className="dash-mock absolute inset-x-6 top-8 bottom-8 p-5 flex flex-col gap-4" aria-hidden>
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-ink-900">Good morning 👋</span>
                 <span className="w-7 h-7 rounded-lg bg-indigo-50 grid place-items-center text-xs">🏠</span>
@@ -173,12 +178,12 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Live prices */}
-        <div className="mt-16 max-w-3xl mx-auto relative animate-fade-up [animation-delay:540ms]">
-          <CryptoPriceWidget />
+            {/* Small ticker banner, floating on the side of the dashboard mock */}
+            <div className="absolute -bottom-8 -start-8 z-20 hidden lg:block animate-fade-up [animation-delay:520ms]">
+              <CryptoTicker />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -211,29 +216,37 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Learn — featured, spans 2 cols + both rows */}
-            {services.filter(s => s.featured).map((s) => (
-              <Reveal key={s.label} className="col-span-2 md:row-span-2">
-                <a
-                  href={s.href}
-                  target={s.external ? '_blank' : undefined}
-                  rel={s.external ? 'noopener noreferrer' : undefined}
-                  className="group flex flex-col h-full items-center text-center justify-center rounded-3xl p-7 tilt-3d bg-gradient-to-b from-amber-50 via-white to-indigo-50 border border-indigo-100"
-                >
-                  <span className="text-5xl w-20 h-20 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 border border-indigo-200 mb-4">
-                    {s.icon}
-                  </span>
-                  <div className="font-display font-black text-2xl text-ink-900 mb-2">{s.label}</div>
-                  <p className="text-ink-600 leading-relaxed mb-5">{s.desc}</p>
-                  <div className="text-indigo-600 text-sm font-bold flex items-center gap-1.5 transition-all group-hover:gap-3">
-                    <span>{s.cta}</span>
-                    <span aria-hidden>←</span>
+          {/* Learn — the flagship feature, full-width banner above the rest */}
+          {services.filter(s => s.featured).map((s) => (
+            <Reveal key={s.label} className="mb-4">
+              <a
+                href={s.href}
+                target={s.external ? '_blank' : undefined}
+                rel={s.external ? 'noopener noreferrer' : undefined}
+                className="group relative flex flex-col md:flex-row items-center text-center md:text-right gap-6 rounded-3xl p-8 md:p-10 tilt-3d border-gradient-light bg-gradient-to-l from-indigo-50 via-white to-amber-50 overflow-hidden"
+              >
+                <span className="absolute top-5 start-5 text-[11px] font-bold bg-indigo-600 text-white px-3 py-1 rounded-full shadow-glow-indigo">
+                  ⭐ הכי פופולרי
+                </span>
+                <span className="text-6xl w-24 h-24 shrink-0 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 border border-indigo-200">
+                  {s.icon}
+                </span>
+                <div className="flex-1">
+                  <div className="font-display font-black text-3xl text-ink-900 mb-2">{s.label}</div>
+                  <p className="text-ink-600 leading-relaxed mb-4 max-w-xl">{s.desc}</p>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <div className="text-indigo-600 text-base font-bold flex items-center gap-1.5 transition-all group-hover:gap-3">
+                      <span>{s.cta}</span>
+                      <span aria-hidden>←</span>
+                    </div>
+                    <span className="text-xs text-ink-400">+500 מאמרים · 4 מסלולי לימוד</span>
                   </div>
-                </a>
-              </Reveal>
-            ))}
+                </div>
+              </a>
+            </Reveal>
+          ))}
 
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* Other active services — colored card */}
             {services.filter(s => !s.featured && s.active).map((s, i) => (
               <Reveal key={s.label} delay={i * 90} className="col-span-2 md:col-span-2">
