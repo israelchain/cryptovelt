@@ -1,7 +1,7 @@
 # ADR 001 — Hébergement production CryptoVelt MVP
 
 **Date :** 2026-07-01 (mise à jour 2026-07-03)  
-**Statut :** Hébergeur confirmé (Vercel) — domaine apex/www en attente de confirmation d'Israël  
+**Statut :** Hébergeur confirmé (Vercel) et domaine confirmé (apex `cryptovelt.co.il` + `www` en redirection) — migration bloquée sur credentials (VERCEL_TOKEN + GitHub PAT, voir CRY-40)  
 **Auteur :** devgur
 
 ---
@@ -21,13 +21,13 @@ Le site tournait provisoirement sur GitHub Pages (`israelchain.github.io/cryptov
 - Free tier suffisant pour MVP
 - Preview deployments pour chaque PR
 
-**Domaine — en attente de confirmation (CRY-7a)**
+**Domaine — confirmé par Israël le 2026-07-03 (CRY-31 → CRY-39)**
 
-Israël n'a pas encore tranché entre `cryptovelt.co.il` (apex) et `www.cryptovelt.co.il` (« j'ai pas compris la différence »). yankale lui a réexpliqué avec une recommandation par défaut :
+Israël a tranché : **apex canonique (`cryptovelt.co.il`) + redirection `www` → apex.** C'est exactement le défaut anticipé ci-dessous et déjà préparé dans la config Vercel — aucun changement de config nécessaire.
 
 > **Apex canonique (`cryptovelt.co.il`) + redirection `www` → apex.** C'est le standard du marché, et trivial à configurer sur Vercel (case à cocher dans Domains, pas de DNS custom à gérer côté redirection).
 
-Cette ADR et la config Vercel sont préparées avec ce défaut. **Le DNS de prod ne sera branché qu'après confirmation explicite d'Israël** (réponse attendue sur l'interaction CRY-31 « 2 précisions pour finir »).
+Ce point est définitivement tranché. **Le DNS de prod ne sera branché qu'après un dernier go explicite d'Israël**, une fois le projet importé dans Vercel (cf. CRY-34/CRY-40 — migration actuellement bloquée sur les credentials d'exécution).
 
 ## Alternatives considérées
 
@@ -87,8 +87,8 @@ Dans Vercel → Project → Settings → Domains : ajouter les deux domaines (`c
 3. [x] Repo GitHub public créé et déployé — `israelchain/cryptovelt` (provisoire, sur GitHub Pages)
 4. [x] Build validé sans `NEXT_PUBLIC_BASE_PATH` (mode Vercel / domaine racine) — `npm run build` OK, `out/` généré, 1.3 Mo, 9 pages statiques
 5. [x] Hébergeur final confirmé par Israël : **Vercel** (2026-07-03)
-6. [ ] Domaine final confirmé par Israël : apex vs `www` (question réexpliquée sur CRY-31, réponse attendue)
-7. [ ] **yankale/devgur** : Importer `israelchain/cryptovelt` dans Vercel (dashboard, ou API avec un `VERCEL_TOKEN` fourni via un secret Paperclip — pas en clair dans un commentaire)
+6. [x] Domaine final confirmé par Israël : **apex** `cryptovelt.co.il` + `www` en redirection (2026-07-03, CRY-39)
+7. [ ] **yankale/devgur** : Importer `israelchain/cryptovelt` dans Vercel (dashboard, ou API avec un `VERCEL_TOKEN` fourni via un secret Paperclip — pas en clair dans un commentaire) — **bloqué : en attente du dépôt des secrets `VERCEL_TOKEN` + GitHub PAT dans le coffre Paperclip (CRY-40)**
 8. [ ] **yankale** : Connecter le(s) domaine(s) dans Vercel Settings → Domains (apex canonique + `www` redirect, sauf choix contraire d'Israël)
 9. [ ] **yankale** : Configurer les DNS chez le registrar (Hostinger) — **uniquement après confirmation du domaine**
 10. [ ] devgur : Basculer `main` du déploiement GitHub Pages vers Vercel une fois le projet importé, retirer le workflow `deploy.yml` GitHub Pages
