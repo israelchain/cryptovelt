@@ -57,10 +57,10 @@ export const tools: CockpitTool[] = [
   },
   {
     id: 'antigravity',
-    name: 'Google Antigravity',
+    name: 'Google Antigravity 2.0',
     href: 'https://antigravity.google/',
-    quota: 'IDE agentique : quotas Gemini 3 Pro + Claude 4.5 Sonnet.',
-    usage: 'Dev du site/forum.',
+    quota: 'Appli desktop dédiée + CLI. Modèle par défaut inclus : Gemini 3.5 Flash. Claude (Opus 4.8 / Sonnet 4.6 / Haiku 4.5) et GPT-OSS restent accessibles, mais uniquement avec ta propre clé API — pas inclus dans l’abonnement Google.',
+    usage: 'Dev du site/forum avec Gemini 3.5 Flash inclus ; Claude en option payante à part si besoin.',
     note: 'Depuis le 18/06/2026, Gemini Code Assist (usage individuel) a été fusionné ici — voir ligne ci-dessous.',
   },
   {
@@ -68,8 +68,8 @@ export const tools: CockpitTool[] = [
     name: 'Gemini Code Assist',
     href: 'https://antigravity.google/',
     quota: 'Historique : quotas élevés (Developer Program Premium). Depuis le 18/06/2026, l’extension IDE et le CLI Gemini Code Assist ne servent plus les comptes individuels / AI Pro / AI Ultra.',
-    usage: 'Migré vers Antigravity (CLI + IDE) — utiliser cette entrée à la place pour le dev quotidien.',
-    note: '⚠️ Outil retiré côté Google pour les comptes AI Pro individuels — conservé ici pour mémoire, voir Antigravity.',
+    usage: 'Migré vers Antigravity 2.0 (CLI + appli desktop) — utiliser cette entrée à la place pour le dev quotidien.',
+    note: '⚠️ Outil retiré côté Google pour les comptes AI Pro individuels — conservé ici pour mémoire, voir Antigravity 2.0.',
   },
   {
     id: 'ai-studio',
