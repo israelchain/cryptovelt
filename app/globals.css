@@ -160,14 +160,7 @@ body {
     linear-gradient(115deg, #fff8ea 0%, #fdf6ec 22%, #f4f0fb 55%, #ece9fb 78%, #e7e3fa 100%);
 }
 
-/* ── Isometric dashboard mock card ── */
-.dash-mock {
-  background: #ffffff;
-  border-radius: 1.25rem;
-  box-shadow: 0 20px 50px -20px rgba(76, 29, 149, 0.35), 0 4px 14px rgba(11, 20, 38, 0.06);
-  transform: perspective(1400px) rotateY(-8deg) rotateX(3deg);
-}
-
+/* ── Hero glow behind floating coins ── */
 .dash-mock-glow {
   position: absolute;
   inset: -10%;

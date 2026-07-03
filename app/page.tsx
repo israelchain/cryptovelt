@@ -135,51 +135,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Mini dashboard card */}
-            <div className="dash-mock absolute inset-x-6 top-8 bottom-8 p-5 flex flex-col gap-4" aria-hidden>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-ink-900">Good morning 👋</span>
-                <span className="w-7 h-7 rounded-lg bg-indigo-50 grid place-items-center text-xs">🏠</span>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2">
-                  <div className="text-[10px] text-ink-400">Total Balance</div>
-                  <div className="text-sm font-bold text-ink-900" dir="ltr">$24,892.41</div>
-                  <div className="text-[10px] text-mint-600 font-semibold" dir="ltr">+8.35%</div>
-                </div>
-                <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2">
-                  <div className="text-[10px] text-ink-400">Market Cap</div>
-                  <div className="text-sm font-bold text-ink-900" dir="ltr">$2.11T</div>
-                  <div className="text-[10px] text-mint-600 font-semibold" dir="ltr">+2.11%</div>
-                </div>
-              </div>
-              <div className="flex-1 rounded-xl bg-slate-50 border border-slate-100 px-3 py-2 flex flex-col">
-                <div className="text-[10px] text-ink-400 mb-1">Market Trend</div>
-                <svg viewBox="0 0 120 40" className="flex-1 w-full" preserveAspectRatio="none">
-                  <polyline
-                    points="0,32 15,26 30,29 45,18 60,22 75,10 90,14 105,6 120,9"
-                    fill="none"
-                    stroke="#6d5bd0"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2 space-y-1.5">
-                {[
-                  ['Bitcoin', '$67,420.10'],
-                  ['Ethereum', '$3,245.80'],
-                ].map(([name, price]) => (
-                  <div key={name} className="flex items-center justify-between text-[11px]">
-                    <span className="text-ink-600 font-medium">{name}</span>
-                    <span className="text-ink-900 font-bold" dir="ltr">{price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Small ticker banner, floating on the side of the dashboard mock */}
+            {/* Small ticker banner, floating on the side of the hero */}
             <div className="absolute -bottom-8 -start-8 z-20 hidden lg:block animate-fade-up [animation-delay:520ms]">
               <CryptoTicker />
             </div>
