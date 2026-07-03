@@ -111,9 +111,29 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Dashboard mock + floating coins (renders on the left in RTL) */}
+          {/* Learning preview card + floating coins (renders on the left in RTL) */}
           <div className="relative h-[22rem] sm:h-[26rem] hidden sm:block">
             <div className="dash-mock-glow" aria-hidden />
+
+            {/* Glossary/lesson preview card — real educational content, not a fake dashboard */}
+            <div className="card tilt-3d rounded-3xl p-6 w-64 sm:w-72 mx-auto mt-10 relative z-10 animate-fade-up [animation-delay:200ms]">
+              <span className="inline-block text-[11px] font-bold text-indigo-600 bg-indigo-50 rounded-full px-3 py-1 mb-4">
+                מונח השבוע
+              </span>
+              <h3 className="font-display text-xl font-black text-ink-900 mb-2">מהו בלוקצ&apos;יין?</h3>
+              <p className="text-ink-500 text-sm leading-relaxed mb-5">
+                מאגר מידע מבוזר ושקוף, שמאפשר לרשום עסקאות בביטחון וללא צורך בגורם מתווך מרכזי.
+              </p>
+              <a
+                href={LEARN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-indigo-600 hover:text-indigo-700"
+              >
+                <span>קרא את ההסבר המלא</span>
+                <span aria-hidden>←</span>
+              </a>
+            </div>
 
             {/* Floating 3D coins */}
             <div className="coin-stage absolute -top-2 right-[8%] w-16 h-16 animate-float" aria-hidden>
