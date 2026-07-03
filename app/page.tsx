@@ -7,54 +7,49 @@ const WHATSAPP_URL = '#'
 
 const services = [
   {
-    icon: '📚',
-    label: 'לימוד',
-    desc: 'קורסים, מאמרים, פודקאסטים ולקסיקון — בעברית מהבסיס ועד מתקדם',
+    icon: '🎓',
+    label: 'למידה והכשרה',
+    desc: 'קורסים, מדריכי לימוד ולקסיקון מהצעד הראשון ועד לנושאים מתקדמים — בעברית, מהבסיס.',
     href: LEARN_URL,
     external: true,
     featured: true,
     active: true,
+    cta: 'התחל ללמוד בחינם',
   },
   {
     icon: '💬',
     label: 'פורום',
-    desc: 'המקום לשאול, לדבר ולהתייעץ עם הקהילה',
+    desc: 'המקום לשאול, לדבר ולהתייעץ עם הקהילה — כל שאלה מקבלת מענה.',
     href: FORUM_URL,
     external: true,
     active: true,
-  },
-  {
-    icon: '🏠',
-    label: 'עמוד הבית',
-    desc: 'השער המרכזי לכל עולם הקריפטו שלנו',
-    href: '/',
-    active: true,
+    cta: 'כנסו לפורום',
   },
   {
     icon: '📰',
     label: 'חדשות',
-    desc: 'עדכונים שוטפים מהעולם — קצר וארוך',
-    href: '#',
-    active: false,
-  },
-  {
-    icon: '🎮',
-    label: 'משחק השקעות',
-    desc: 'סימולטור מסחר וירטואלי — לומדים בלי סיכון',
+    desc: 'כל העדכונים, האירועים וההתפתחויות החשובות בעולם הקריפטו במקום אחד.',
     href: '#',
     active: false,
   },
   {
     icon: '🛠️',
     label: 'כלים',
-    desc: 'מחשבונים, הצהרות מס, המרות',
+    desc: 'מחשבונים, הצהרות מס והמרות שיעזרו לך להבין את עולם הקריפטו בצורה ברורה ופשוטה.',
     href: '#',
     active: false,
   },
   {
     icon: '🔐',
-    label: 'ארנק ומסחר',
-    desc: 'ניהול נכסים דיגיטליים בצורה בטוחה',
+    label: 'ארנק',
+    desc: 'ניהול נכסים דיגיטליים בצורה בטוחה — מדריכים לפני שמתחילים.',
+    href: '#',
+    active: false,
+  },
+  {
+    icon: '🎮',
+    label: 'משחק',
+    desc: 'סימולטור מסחר וירטואלי — לומדים בלי סיכון וללא כסף אמיתי.',
     href: '#',
     active: false,
   },
@@ -70,67 +65,119 @@ export default function HomePage() {
   return (
     <div dir="rtl">
       {/* ── HERO ── */}
-      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
-        {/* Drifting pastel auras */}
+      <section className="relative pt-16 pb-24 px-4 overflow-hidden hero-gradient">
+        {/* Faint grid + drifting auras */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="absolute top-12 right-[12%] w-72 h-72 rounded-full bg-btc-300/25 blur-3xl animate-float-slow" />
-          <div className="absolute bottom-0 left-[8%] w-64 h-64 rounded-full bg-brand-300/25 blur-3xl animate-float-slow [animation-delay:-6s]" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[32rem] h-[32rem] rounded-full bg-violet-300/15 blur-3xl" />
-          {/* Floating coin glyphs */}
-          <span className="absolute top-24 right-[22%] text-btc-400/40 text-5xl animate-float select-none">₿</span>
-          <span className="absolute top-48 left-[18%] text-brand-400/35 text-4xl animate-float [animation-delay:-2.5s] select-none">Ξ</span>
-          <span className="absolute bottom-24 right-[15%] text-violet-400/35 text-3xl animate-float [animation-delay:-4.5s] select-none">◎</span>
+          <div className="absolute top-0 left-0 w-[28rem] h-[28rem] rounded-full bg-indigo-300/20 blur-3xl animate-float-slow" />
+          <div className="absolute bottom-0 right-0 w-72 h-72 rounded-full bg-amber-200/30 blur-3xl animate-float-slow [animation-delay:-6s]" />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative">
-          {/* 3D spinning coin */}
-          <div className="animate-fade-up coin-stage relative inline-block w-28 h-28 mb-8">
-            <div className="coin-3d text-5xl">
-              <div className="coin-face">₿</div>
-              <div className="coin-face coin-face--back">₿</div>
+        <div className="max-w-6xl mx-auto relative grid md:grid-cols-2 gap-14 items-center">
+          {/* Copy + CTAs (renders on the right in RTL) */}
+          <div className="text-center md:text-right relative z-10">
+            <h1 className="animate-fade-up font-display text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-[1.2] text-ink-900">
+              כל מה שצריך לדעת על קריפטו,
+              <br />
+              במקום אחד<span className="text-indigo-600">.</span>
+            </h1>
+
+            <p className="animate-fade-up [animation-delay:160ms] text-ink-500 mb-10 max-w-xl mx-auto md:mx-0 text-lg leading-relaxed">
+              כאן תמצא מדריכים מקיפים, חדשות ועדכונים, כלים שימושיים ותוכן מקצועי, בשפה פשוטה
+              וברורה, כדי לעזור לך להבין את עולם הקריפטו, ללמוד בקצב שלך ולהתקדם בביטחון.
+            </p>
+
+            <div className="animate-fade-up [animation-delay:280ms] flex flex-col sm:flex-row items-center md:items-stretch justify-center md:justify-start gap-4">
+              <a
+                href="#platform"
+                className="inline-flex items-center gap-2 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-ink-900 font-bold py-3.5 px-7 rounded-xl transition-all"
+              >
+                <span aria-hidden>↖</span>
+                <span>גלה את הפלטפורמה</span>
+              </a>
+              <a
+                href={LEARN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-l from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold py-3.5 px-7 rounded-xl transition-all shadow-glow-indigo hover:shadow-glow-indigo-lg hover:-translate-y-0.5"
+              >
+                <span aria-hidden>↖</span>
+                <span>התחל ללמוד בחינם</span>
+              </a>
             </div>
-            <div className="coin-shadow" aria-hidden />
           </div>
 
-          <h1 className="animate-fade-up [animation-delay:120ms] font-display text-5xl md:text-7xl font-black mb-6 leading-[1.15] text-ink-900">
-            מתחילים להבין את
-            <br />
-            <span className="text-gradient-orange animate-shimmer">עולם הקריפטו</span>
-          </h1>
+          {/* Dashboard mock + floating coins (renders on the left in RTL) */}
+          <div className="relative h-[22rem] sm:h-[26rem] hidden sm:block" aria-hidden>
+            <div className="dash-mock-glow" />
 
-          <p className="animate-fade-up [animation-delay:240ms] text-2xl md:text-3xl text-ink-700 mb-4 font-light">
-            בעברית, פשוט, מהבסיס
-          </p>
-          <p className="animate-fade-up [animation-delay:320ms] text-ink-500 mb-12 max-w-2xl mx-auto text-lg leading-relaxed">
-            הפלטפורמה החרדית הראשונה ללימוד קריפטו
-            <br />
-            <span className="text-ink-400 text-base">— תוכן, קהילה וכלים במקום אחד —</span>
-          </p>
+            {/* Floating 3D coins */}
+            <div className="coin-stage absolute -top-2 right-[8%] w-16 h-16 animate-float">
+              <div className="coin-3d coin-3d--indigo text-2xl">
+                <div className="coin-face coin-face--indigo">₿</div>
+                <div className="coin-face coin-face--indigo coin-face--back">₿</div>
+              </div>
+            </div>
+            <div className="coin-stage absolute top-[38%] right-0 w-10 h-10 animate-float [animation-delay:-2.5s]">
+              <div className="coin-3d coin-3d--indigo text-base">
+                <div className="coin-face coin-face--indigo">Ξ</div>
+                <div className="coin-face coin-face--indigo coin-face--back">Ξ</div>
+              </div>
+            </div>
+            <div className="coin-stage absolute bottom-4 right-[18%] w-20 h-20 animate-float [animation-delay:-4.5s]">
+              <div className="coin-3d coin-3d--indigo text-3xl">
+                <div className="coin-face coin-face--indigo">◎</div>
+                <div className="coin-face coin-face--indigo coin-face--back">◎</div>
+              </div>
+            </div>
 
-          <div className="animate-fade-up [animation-delay:420ms] flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={LEARN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-l from-btc-600 to-btc-500 hover:from-btc-500 hover:to-btc-400 text-white font-bold py-4 px-9 rounded-2xl text-lg transition-all shadow-glow-orange hover:shadow-glow-orange-lg hover:-translate-y-0.5"
-            >
-              <span>📚</span>
-              <span>להתחיל ללמוד</span>
-            </a>
-            <a
-              href={FORUM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 card card-hover text-ink-800 font-semibold py-4 px-9 rounded-2xl text-lg"
-            >
-              <span>💬</span>
-              <span>הצטרפו לפורום</span>
-            </a>
+            {/* Mini dashboard card */}
+            <div className="dash-mock absolute inset-x-6 top-8 bottom-8 p-5 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-bold text-ink-900">Good morning 👋</span>
+                <span className="w-7 h-7 rounded-lg bg-indigo-50 grid place-items-center text-xs">🏠</span>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2">
+                  <div className="text-[10px] text-ink-400">Total Balance</div>
+                  <div className="text-sm font-bold text-ink-900" dir="ltr">$24,892.41</div>
+                  <div className="text-[10px] text-mint-600 font-semibold" dir="ltr">+8.35%</div>
+                </div>
+                <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2">
+                  <div className="text-[10px] text-ink-400">Market Cap</div>
+                  <div className="text-sm font-bold text-ink-900" dir="ltr">$2.11T</div>
+                  <div className="text-[10px] text-mint-600 font-semibold" dir="ltr">+2.11%</div>
+                </div>
+              </div>
+              <div className="flex-1 rounded-xl bg-slate-50 border border-slate-100 px-3 py-2 flex flex-col">
+                <div className="text-[10px] text-ink-400 mb-1">Market Trend</div>
+                <svg viewBox="0 0 120 40" className="flex-1 w-full" preserveAspectRatio="none">
+                  <polyline
+                    points="0,32 15,26 30,29 45,18 60,22 75,10 90,14 105,6 120,9"
+                    fill="none"
+                    stroke="#6d5bd0"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2 space-y-1.5">
+                {[
+                  ['Bitcoin', '$67,420.10'],
+                  ['Ethereum', '$3,245.80'],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex items-center justify-between text-[11px]">
+                    <span className="text-ink-600 font-medium">{name}</span>
+                    <span className="text-ink-900 font-bold" dir="ltr">{price}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Live prices */}
-        <div className="mt-20 max-w-3xl mx-auto relative animate-fade-up [animation-delay:540ms]">
+        <div className="mt-16 max-w-3xl mx-auto relative animate-fade-up [animation-delay:540ms]">
           <CryptoPriceWidget />
         </div>
       </section>
@@ -151,84 +198,71 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* ── SERVICES GRID ── */}
-      <section className="py-20 px-4">
+      {/* ── SERVICES GRID (bento) ── */}
+      <section id="platform" className="py-20 px-4 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <Reveal className="text-center mb-12">
-            <span className="kicker justify-center mb-4">הפלטפורמה</span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900 mb-3">
-              כל העולם שלנו במקום אחד
+              כל מה שמחכה לך <span className="text-indigo-600">בפלטפורמה</span>
             </h2>
-            <p className="text-ink-500 text-lg">בחרו את המקום הנכון עבורכם</p>
+            <p className="text-ink-500 text-lg max-w-2xl mx-auto">
+              למד, התעדכן וחקור והשתמש בכלים שיעזרו לך להבין את עולם הקריפטו — הכל מחולק
+              לנושאים ברורים, כדי שתוכל למצוא בקלות את מה שמעניין אותך.
+            </p>
           </Reveal>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Learn — featured, spans 2 cols */}
+            {/* Learn — featured, spans 2 cols + both rows */}
             {services.filter(s => s.featured).map((s) => (
-              <Reveal key={s.label} className="col-span-2">
+              <Reveal key={s.label} className="col-span-2 md:row-span-2">
                 <a
                   href={s.href}
                   target={s.external ? '_blank' : undefined}
                   rel={s.external ? 'noopener noreferrer' : undefined}
-                  className="group flex flex-col h-full border-gradient-light rounded-3xl p-7 tilt-3d"
+                  className="group flex flex-col h-full items-center text-center justify-center rounded-3xl p-7 tilt-3d bg-gradient-to-b from-amber-50 via-white to-indigo-50 border border-indigo-100"
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-4xl w-16 h-16 grid place-items-center rounded-2xl bg-gradient-to-br from-btc-100 to-violet-100 border border-btc-200">
-                      {s.icon}
-                    </span>
-                    <div>
-                      <div className="font-display font-black text-2xl text-ink-900">{s.label}</div>
-                      <div className="text-xs text-btc-600 font-bold mt-0.5">עדיפות ראשונה ✨</div>
-                    </div>
-                  </div>
-                  <p className="text-ink-600 leading-relaxed flex-1">{s.desc}</p>
-                  <div className="mt-5 text-btc-600 text-sm font-bold flex items-center gap-1.5 transition-all group-hover:gap-3">
-                    <span>כנסו ללימוד</span>
+                  <span className="text-5xl w-20 h-20 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 border border-indigo-200 mb-4">
+                    {s.icon}
+                  </span>
+                  <div className="font-display font-black text-2xl text-ink-900 mb-2">{s.label}</div>
+                  <p className="text-ink-600 leading-relaxed mb-5">{s.desc}</p>
+                  <div className="text-indigo-600 text-sm font-bold flex items-center gap-1.5 transition-all group-hover:gap-3">
+                    <span>{s.cta}</span>
                     <span aria-hidden>←</span>
                   </div>
                 </a>
               </Reveal>
             ))}
 
-            {/* Other active services */}
+            {/* Other active services — colored card */}
             {services.filter(s => !s.featured && s.active).map((s, i) => (
-              <Reveal key={s.label} delay={i * 90}>
-                {s.href === '/' ? (
-                  <div className="flex flex-col h-full card rounded-3xl p-5 ring-1 ring-btc-400/60">
-                    <span className="text-3xl mb-3">{s.icon}</span>
-                    <div className="font-bold text-ink-900 mb-1">{s.label}</div>
-                    <p className="text-ink-500 text-xs leading-relaxed flex-1">{s.desc}</p>
-                    <div className="mt-3 text-xs text-btc-600 font-bold">אתם כאן ✓</div>
+              <Reveal key={s.label} delay={i * 90} className="col-span-2 md:col-span-2">
+                <a
+                  href={s.href}
+                  target={s.external ? '_blank' : undefined}
+                  rel={s.external ? 'noopener noreferrer' : undefined}
+                  className="group flex flex-col h-full card rounded-3xl p-5 tilt-3d bg-gradient-to-br from-indigo-50 to-violet-100 border-indigo-200"
+                >
+                  <span className="text-3xl mb-3">{s.icon}</span>
+                  <div className="font-bold text-ink-900 mb-1">{s.label}</div>
+                  <p className="text-ink-500 text-xs leading-relaxed flex-1 mb-3">{s.desc}</p>
+                  <div className="text-indigo-600 text-xs font-bold flex items-center gap-1 transition-all group-hover:gap-2.5">
+                    <span>{s.cta}</span>
+                    <span aria-hidden>←</span>
                   </div>
-                ) : (
-                  <a
-                    href={s.href}
-                    target={s.external ? '_blank' : undefined}
-                    rel={s.external ? 'noopener noreferrer' : undefined}
-                    className="group flex flex-col h-full card rounded-3xl p-5 tilt-3d"
-                  >
-                    <span className="text-3xl mb-3">{s.icon}</span>
-                    <div className="font-bold text-ink-900 mb-1 group-hover:text-brand-600 transition-colors">{s.label}</div>
-                    <p className="text-ink-500 text-xs leading-relaxed flex-1">{s.desc}</p>
-                    <div className="mt-3 text-brand-600 text-xs font-bold flex items-center gap-1 transition-all group-hover:gap-2.5">
-                      <span>כנסו</span>
-                      <span aria-hidden>←</span>
-                    </div>
-                  </a>
-                )}
+                </a>
               </Reveal>
             ))}
 
-            {/* Coming soon services */}
+            {/* Coming soon services — dotted placeholder */}
             {services.filter(s => !s.active).map((s, i) => (
               <Reveal key={s.label} delay={i * 90}>
-                <div className="flex flex-col h-full rounded-3xl p-5 border border-dashed border-slate-300 bg-slate-50/60">
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-3xl grayscale opacity-60">{s.icon}</span>
-                    <span className="text-[10px] bg-white border border-slate-200 text-ink-400 px-2.5 py-1 rounded-full font-bold">בקרוב</span>
+                <div className="relative flex flex-col h-full rounded-3xl p-5 border border-slate-200 placeholder-dots overflow-hidden">
+                  <span className="absolute top-4 left-4 text-[10px] bg-white border border-slate-200 text-ink-400 px-2.5 py-1 rounded-full font-bold">בקרוב</span>
+                  <div className="mt-auto text-center">
+                    <span className="text-3xl grayscale opacity-60 block mb-2">{s.icon}</span>
+                    <div className="font-bold text-ink-600">{s.label}</div>
                   </div>
-                  <div className="font-bold text-ink-500 mb-1">{s.label}</div>
-                  <p className="text-ink-400 text-xs leading-relaxed">{s.desc}</p>
                 </div>
               </Reveal>
             ))}

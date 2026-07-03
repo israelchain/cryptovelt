@@ -15,7 +15,7 @@ export default function Footer() {
     <footer dir="rtl" className="relative mt-0 text-ink-500">
       {/* Gradient hairline separator */}
       <div
-        className="h-px w-full bg-gradient-to-l from-transparent via-btc-400/60 to-transparent"
+        className="h-px w-full bg-gradient-to-l from-transparent via-indigo-400/60 to-transparent"
         aria-hidden
       />
       <div className="bg-slate-50">
@@ -23,7 +23,7 @@ export default function Footer() {
           {/* Brand + links row */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
             <div className="flex items-center gap-2.5">
-              <span className="w-9 h-9 grid place-items-center rounded-xl bg-gradient-to-br from-btc-400 to-btc-600 text-white font-black text-xl">
+              <span className="w-9 h-9 grid place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-black text-xl">
                 ₿
               </span>
               <span className="font-display font-black text-lg text-ink-900">קריפטו וועלט</span>
@@ -42,7 +42,7 @@ export default function Footer() {
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-btc-600 transition-colors"
+                    className="hover:text-indigo-600 transition-colors"
                   >
                     {l.label}
                   </a>
@@ -51,11 +51,11 @@ export default function Footer() {
             </nav>
 
             <div className="flex items-center gap-4 text-sm">
-              <a href="#" className="hover:text-btc-600 transition-colors">וואטסאפ</a>
+              <a href="#" className="hover:text-indigo-600 transition-colors">וואטסאפ</a>
               <span className="text-slate-300">|</span>
-              <a href="#" className="hover:text-btc-600 transition-colors">טלגרם</a>
+              <a href="#" className="hover:text-indigo-600 transition-colors">טלגרם</a>
               <span className="text-slate-300">|</span>
-              <a href="mailto:info@cryptovelt.cloud" className="hover:text-btc-600 transition-colors">אימייל</a>
+              <a href="mailto:info@cryptovelt.cloud" className="hover:text-indigo-600 transition-colors">אימייל</a>
             </div>
           </div>
 

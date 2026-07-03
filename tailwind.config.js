@@ -62,6 +62,8 @@ module.exports = {
         'glow-orange-lg': '0 16px 44px -8px rgba(247, 147, 26, 0.6)',
         'glow-sky': '0 12px 32px -10px rgba(14, 165, 233, 0.4)',
         'glow-green': '0 12px 32px -10px rgba(10, 193, 142, 0.5)',
+        'glow-indigo': '0 12px 32px -10px rgba(79, 70, 229, 0.45)',
+        'glow-indigo-lg': '0 16px 44px -8px rgba(79, 70, 229, 0.55)',
       },
       keyframes: {
         float: {
