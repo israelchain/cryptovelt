@@ -50,9 +50,15 @@ export default function Footer() {
             </nav>
 
             <div className="flex items-center gap-4 text-sm">
-              <a href="#" className="hover:text-indigo-600 transition-colors">וואטסאפ</a>
+              <span className="text-ink-400 flex items-center gap-1">
+                וואטסאפ
+                <span className="text-[9px] border border-slate-200 rounded px-1 py-px">בקרוב</span>
+              </span>
               <span className="text-slate-300">|</span>
-              <a href="#" className="hover:text-indigo-600 transition-colors">טלגרם</a>
+              <span className="text-ink-400 flex items-center gap-1">
+                טלגרם
+                <span className="text-[9px] border border-slate-200 rounded px-1 py-px">בקרוב</span>
+              </span>
               <span className="text-slate-300">|</span>
               <a href="mailto:info@cryptovelt.cloud" className="hover:text-indigo-600 transition-colors">אימייל</a>
             </div>

@@ -3,7 +3,6 @@ import Reveal from '@/components/Reveal'
 
 const FORUM_URL = 'https://forum.cryptovelt.cloud'
 const LEARN_URL = 'https://learn.cryptovelt.cloud'
-const WHATSAPP_URL = '#'
 
 const services = [
   {
@@ -289,7 +288,8 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* ── WHATSAPP COMMUNITY ── */}
+      {/* ── COMMUNITY ── */}
+      {/* WhatsApp/Telegram invite links aren't available yet — routes to the live forum instead of a dead "#" link. */}
       <section className="py-20 px-4">
         <Reveal className="max-w-2xl mx-auto">
           <div className="card rounded-3xl px-8 py-14 text-center relative overflow-hidden">
@@ -301,11 +301,13 @@ export default function HomePage() {
             <p className="text-ink-700 mb-2 text-xl">+1,500 חברים כבר כאן.</p>
             <p className="text-ink-500 mb-10">שואלים, לומדים, משקיעים — ביחד.</p>
             <a
-              href={WHATSAPP_URL}
+              href={FORUM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-gradient-to-l from-mint-600 to-mint-500 hover:from-mint-500 hover:to-mint-400 text-white font-bold py-4 px-9 rounded-2xl text-lg transition-all shadow-glow-green hover:-translate-y-0.5"
             >
-              <span>📱</span>
-              <span>הצטרפו לוואטסאפ</span>
+              <span>💬</span>
+              <span>הצטרפו לפורום</span>
             </a>
           </div>
         </Reveal>
