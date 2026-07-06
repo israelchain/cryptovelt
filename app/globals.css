@@ -188,6 +188,89 @@ body {
   background-position: center;
 }
 
+/* ── Figma "deep violet" gradient surfaces ──────────────────────
+   Used on: large bento cards (מסחר/חדשות), community banner, footer.
+   Confirmed against screenshots: navy-indigo → mid violet, ~135deg. */
+.bg-deep-gradient {
+  background: linear-gradient(135deg, #2b1f6b 0%, #3d2d8f 50%, #5b3fb0 100%);
+}
+
+.bg-deep-gradient-soft {
+  background: linear-gradient(120deg, #372a80 0%, #4a37a0 100%);
+}
+
+/* Cream → light-violet gradient (used on the "לימוד והכשרה" bento card) */
+.bg-cream-violet-gradient {
+  background: linear-gradient(120deg, #fdf6e3 0%, #f3ecfb 55%, #e6def8 100%);
+}
+
+/* Faint dot-grid watermark, reusable on hero / dark CTA sections */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.dot-grid-dark {
+  background-image: radial-gradient(rgba(43, 31, 107, 0.12) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* ── Glassmorphism 3D icon tile (translucent purple, used inside bento cards) ── */
+.glass-icon {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.35), rgba(139, 92, 246, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 8px 24px -8px rgba(43, 31, 107, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ── Pill CTA with leading arrow glyph (↖) — the recurring Figma button ── */
+.pill-btn {
+  @apply inline-flex items-center gap-2 rounded-full font-bold transition-all;
+}
+
+.pill-btn--violet {
+  @apply bg-gradient-to-l from-deep-900 to-deep-500 text-white shadow-glow-indigo hover:-translate-y-0.5;
+}
+
+.pill-btn--gold {
+  @apply bg-gold-400 hover:bg-gold-500 text-ink-900 shadow-glow-gold hover:-translate-y-0.5;
+}
+
+.pill-btn--white {
+  @apply bg-white hover:bg-slate-50 text-deep-900;
+}
+
+.pill-btn--outline {
+  @apply border border-indigo-200 text-indigo-700 hover:bg-indigo-50;
+}
+
+/* ── Nav pill (sticky header) ── */
+.nav-pill {
+  @apply flex items-center gap-1 bg-slate-100/80 border border-slate-200 rounded-full px-1.5 py-1.5;
+}
+
+.nav-pill a {
+  @apply flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold text-ink-600 transition-colors whitespace-nowrap;
+}
+
+.nav-pill a:hover {
+  @apply bg-white text-indigo-700 shadow-sm;
+}
+
+/* ── Tag cloud chip ── */
+.tag-chip {
+  @apply inline-flex items-center rounded-full border border-indigo-200 text-indigo-700 text-sm font-semibold px-5 py-2.5 whitespace-nowrap;
+}
+
+.tag-chip--solid {
+  @apply bg-gradient-to-l from-deep-900 to-deep-500 text-white border-transparent;
+}
+
 /* ── 3D coin ─────────────────────────────────────────────
    Pure-CSS spinning bitcoin: a disc rotating on the Y axis
    inside a perspective stage, with stacked pseudo-layers

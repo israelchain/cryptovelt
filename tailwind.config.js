@@ -54,6 +54,24 @@ module.exports = {
           500: '#0ac18e',
           600: '#059f75',
         },
+        // Deep violet/indigo — dark gradient sections (community banner, footer,
+        // large bento cards), confirmed against Figma screenshots (CRY-218).
+        deep: {
+          950: '#1e1650',
+          900: '#2b1f6b',
+          700: '#3d2d8f',
+          500: '#5b3fb0',
+        },
+        // Warm gold — secondary CTA pills + accent chips.
+        gold: {
+          400: '#f0b429',
+          500: '#e5a318',
+          600: '#c98a0f',
+        },
+        cream: {
+          50: '#fdf6e3',
+          100: '#fbf0d3',
+        },
       },
       boxShadow: {
         card: '0 2px 8px rgba(11, 20, 38, 0.05), 0 12px 32px -12px rgba(11, 20, 38, 0.12)',
@@ -64,6 +82,7 @@ module.exports = {
         'glow-green': '0 12px 32px -10px rgba(10, 193, 142, 0.5)',
         'glow-indigo': '0 12px 32px -10px rgba(79, 70, 229, 0.45)',
         'glow-indigo-lg': '0 16px 44px -8px rgba(79, 70, 229, 0.55)',
+        'glow-gold': '0 12px 32px -10px rgba(240, 180, 41, 0.55)',
       },
       keyframes: {
         float: {

@@ -1,75 +1,71 @@
 import Link from 'next/link'
+import { FORUM_URL, LEARN_URL } from '@/lib/site-config'
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
-const FORUM_URL = 'https://forum.cryptovelt.cloud'
-const LEARN_URL = 'https://learn.cryptovelt.cloud'
 
+// Order matches the Figma nav pill, left→right visually (i.e. first item
+// closest to the CTA pill): ארנק, משחק, כלים, חדשות, מסחר, פורום, לימוד, בית.
+// Routes that don't have a live destination yet keep `soon`.
 const navItems = [
-  { label: 'בית', href: '/' },
-  { label: 'למידה', href: LEARN_URL, external: true, emphasize: true },
-  { label: 'פורום', href: FORUM_URL, external: true },
-  { label: 'מסחר', href: '#', soon: true },
-  { label: 'חדשות', href: '#', soon: true },
-  { label: 'כלים', href: '#', soon: true },
-  { label: 'ארנק', href: '#', soon: true },
-  { label: 'משחק', href: '#', soon: true },
+  { label: 'ארנק', icon: '💼', href: '/wallet' },
+  { label: 'משחק', icon: '🕹️', href: '#', soon: true },
+  { label: 'כלים', icon: '🔧', href: '#', soon: true },
+  { label: 'חדשות', icon: '🌐', href: '#', soon: true },
+  { label: 'מסחר', icon: '📈', href: '#', soon: true },
+  { label: 'פורום', icon: '💬', href: FORUM_URL, external: true },
+  { label: 'לימוד', icon: '📖', href: LEARN_URL, external: true },
+  { label: 'בית', icon: '🏠', href: '/' },
 ]
 
 export default function Navbar() {
   return (
     <header dir="rtl" className="glass-light text-sm py-3 px-4 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <img
-            src={`${BASE_PATH}/brand/logo-symbol.svg`}
-            alt="קריפטו וועלט"
-            className="w-9 h-9 group-hover:scale-110 transition-transform"
-          />
-          <span className="font-display font-black text-base text-ink-900 tracking-wide hidden sm:inline">
-            קריפטו וועלט
-          </span>
-        </Link>
+        {/* Violet CTA pill — far right visually in RTL row order, first in DOM */}
+        <a
+          href={LEARN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pill-btn pill-btn--violet py-2.5 px-5 text-sm shrink-0"
+        >
+          <span aria-hidden>↖</span>
+          <span className="hidden sm:inline">התחל ללמוד בחינם</span>
+        </a>
 
-        <nav className="hidden md:flex items-center gap-5">
+        {/* Horizontal nav pill with icons */}
+        <nav className="nav-pill hidden md:flex flex-1 justify-center max-w-2xl mx-auto">
           {navItems.map((item) =>
             item.soon ? (
-              <span key={item.label} className="flex items-center gap-1.5 text-ink-400 text-xs">
-                <span>{item.label}</span>
-                <span className="bg-slate-100 border border-slate-200 text-ink-500 px-1.5 py-0.5 rounded-md text-[10px]">בקרוב</span>
-              </span>
-            ) : item.emphasize ? (
-              <a
+              <span
                 key={item.label}
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener noreferrer' : undefined}
-                className="text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded-lg font-bold transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold text-ink-400"
+                title="בקרוב"
               >
-                {item.label}
-              </a>
+                <span>{item.label}</span>
+                <span aria-hidden>{item.icon}</span>
+              </span>
             ) : (
               <a
                 key={item.label}
                 href={item.href}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noopener noreferrer' : undefined}
-                className="text-ink-600 hover:text-indigo-600 font-semibold transition-colors"
               >
-                {item.label}
+                <span>{item.label}</span>
+                <span aria-hidden>{item.icon}</span>
               </a>
             )
           )}
         </nav>
 
-        <a
-          href={LEARN_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 bg-gradient-to-l from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-glow-indigo shrink-0"
-        >
-          <span aria-hidden>↖</span>
-          <span>התחל ללמוד בחינם</span>
-        </a>
+        {/* Stylized "e"-spiral logo, far left visually */}
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
+          <img
+            src={`${BASE_PATH}/brand/logo-symbol.svg`}
+            alt="קריפטו וועלט"
+            className="w-9 h-9 group-hover:scale-110 transition-transform"
+          />
+        </Link>
       </div>
     </header>
   )
