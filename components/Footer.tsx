@@ -61,11 +61,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-16 relative">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           <div className="col-span-2 order-last md:order-first">
-            <div className="flex items-center gap-2.5 mb-3">
-              <img src={`${BASE_PATH}/brand/logo-symbol-white.svg`} alt="" className="w-10 h-10" aria-hidden />
-              <span className="font-display font-black text-xl">קריפטו וועלט</span>
-            </div>
-            <p className="text-white/70 text-sm">עולם הקריפטו לחרדים</p>
+            <img
+              src={`${BASE_PATH}/brand/logo-lockup.webp`}
+              alt="קריפטו וועלט — עולם הקריפטו לחרדים"
+              className="h-12 w-auto mb-3"
+            />
           </div>
 
           <FooterColumn links={legalLinks} />

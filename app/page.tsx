@@ -2,6 +2,8 @@ import CryptoTicker from '@/components/CryptoTicker'
 import Reveal from '@/components/Reveal'
 import { FORUM_URL, LEARN_URL, CONTACT_EMAIL } from '@/lib/site-config'
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 const stats = [
   { value: '4', label: 'מסלולי לימוד' },
   { value: '+500', label: 'מאמרים ומדריכים' },
@@ -20,7 +22,7 @@ const bentoCards = [
     external: true,
     span: 'md:col-span-2 md:row-span-1',
     className: 'bg-deep-gradient text-white',
-    icon: '📈',
+    icon: 'icon-mishar.webp',
   },
   {
     key: 'limud',
@@ -31,7 +33,7 @@ const bentoCards = [
     external: true,
     span: 'md:col-span-2 md:row-span-2',
     className: 'bg-cream-violet-gradient text-ink-900',
-    icon: '🎓',
+    icon: 'icon-limud.webp',
     alignEnd: true,
   },
   {
@@ -43,7 +45,7 @@ const bentoCards = [
     external: true,
     span: 'md:col-span-1',
     className: 'bg-gold-400 text-ink-900',
-    icon: '💬',
+    icon: 'icon-forum.webp',
   },
   {
     key: 'arnak',
@@ -53,7 +55,7 @@ const bentoCards = [
     href: '/wallet',
     span: 'md:col-span-1',
     className: 'bg-white text-ink-900 border border-slate-200',
-    icon: '🔐',
+    icon: 'icon-arnak.webp',
   },
   {
     key: 'hadashot',
@@ -63,7 +65,7 @@ const bentoCards = [
     href: '#news',
     span: 'md:col-span-2',
     className: 'bg-deep-gradient text-white',
-    icon: '📰',
+    icon: 'icon-news.webp',
   },
   {
     key: 'klim',
@@ -74,7 +76,7 @@ const bentoCards = [
     soon: true,
     span: 'md:col-span-1',
     className: 'bg-cream-50 text-ink-900 border border-slate-200',
-    icon: '🔧',
+    icon: 'icon-klim.webp',
   },
   {
     key: 'game',
@@ -85,14 +87,14 @@ const bentoCards = [
     soon: true,
     span: 'md:col-span-1',
     className: 'bg-indigo-50 text-ink-900',
-    icon: '🎮',
+    icon: 'icon-game.webp',
   },
 ]
 
 const tags = [
-  { label: 'תוכן אמינותי' },
+  { label: 'תוכן איכותי' },
   { label: 'קהילה פעילה' },
-  { label: 'לצייבור החרדי' },
+  { label: 'לציבור החרדי' },
   { label: 'ידע מקצועי', featured: true },
   { label: 'ליווי הלכתי' },
   { label: 'כלים פרקטיים' },
@@ -125,9 +127,14 @@ const PLACEHOLDER_NEWS_CARD = {
 function GuideCard({ index }: { index: number }) {
   return (
     <Reveal delay={index * 90} className="group flex flex-col h-full">
-      <div className="rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-indigo-50 border border-indigo-100 aspect-[16/10] mb-5 grid place-items-center">
-        {/* Illustration placeholder — real photography/illustration pending from design */}
-        <span className="text-5xl opacity-70" aria-hidden>⛓️</span>
+      <div className="rounded-3xl overflow-hidden aspect-[16/10] mb-5">
+        {/* Figma placeholder photo — repeated identically across every card there too */}
+        <img
+          src={`${BASE_PATH}/illustrations/card-guide.webp`}
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover"
+        />
       </div>
       <h3 className="font-display font-black text-lg text-ink-900 mb-2">{PLACEHOLDER_CARD.title}</h3>
       <p className="text-ink-500 text-sm leading-relaxed mb-4 flex-1">{PLACEHOLDER_CARD.desc}</p>
@@ -145,9 +152,14 @@ function GuideCard({ index }: { index: number }) {
 function NewsCard({ index }: { index: number }) {
   return (
     <Reveal delay={(index % 3) * 90} className="group flex flex-col h-full">
-      <div className="rounded-3xl overflow-hidden bg-deep-gradient aspect-[16/10] mb-5 grid place-items-center relative">
-        <span className="text-5xl opacity-80" aria-hidden>⛓️</span>
-        <span className="absolute top-3 left-3 text-lg" aria-hidden>₿</span>
+      <div className="rounded-3xl overflow-hidden aspect-[16/10] mb-5">
+        {/* Figma placeholder illustration — repeated identically across every card there too */}
+        <img
+          src={`${BASE_PATH}/illustrations/card-news.webp`}
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover"
+        />
       </div>
       <h3 className="font-display font-black text-base text-ink-900 mb-2 leading-snug">{PLACEHOLDER_NEWS_CARD.title}</h3>
       <p className="text-ink-500 text-sm leading-relaxed mb-4 flex-1">{PLACEHOLDER_NEWS_CARD.desc}</p>
@@ -183,8 +195,8 @@ export default function HomePage() {
             </h1>
 
             <p className="animate-fade-up [animation-delay:160ms] text-ink-500 mb-10 max-w-xl mx-auto md:mx-0 text-lg leading-relaxed">
-              כאן תמצא מדריכים מקיפים, חדשות ועדכונים, כלים שימושיים ותוכן מקצועי, בשפה פשוטה
-              וברורה, כדי לעזור לך להבין את עולם הקריפטו, ללמוד בקצב שלך ולהתקדם בביטחון.
+              כאן תמצא מדריכים מקיפים, חדשות ועדכונים, כלים שימושיים ותוכן מקצועי, כל מה
+              שתצטרך לדעת על קריפטו!
             </p>
 
             <div className="animate-fade-up [animation-delay:280ms] flex flex-col sm:flex-row items-center md:items-stretch justify-center md:justify-start gap-4 mb-10">
@@ -221,55 +233,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Dashboard mockup + floating 3D coins (renders on the left in RTL) */}
+          {/* Dashboard mockup + floating 3D coins (renders on the left in RTL) — real crop from the Figma export */}
           <div className="relative h-[22rem] sm:h-[26rem] hidden sm:block md:order-1">
             <div className="dash-mock-glow" aria-hidden />
-
-            <div className="card tilt-3d rounded-3xl p-5 w-72 sm:w-80 mx-auto mt-6 relative z-10 animate-fade-up [animation-delay:200ms]">
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-display text-base font-black text-ink-900">Good morning 👋</span>
-                <span className="text-lg" aria-hidden>🔔</span>
-              </div>
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                <div>
-                  <div className="text-[11px] text-ink-400">Total Balance</div>
-                  <div className="font-bold text-ink-900" dir="ltr">$ 24,892.41</div>
-                </div>
-                <div>
-                  <div className="text-[11px] text-ink-400">24h Change</div>
-                  <div className="font-bold text-mint-600" dir="ltr">$ 1,920.67</div>
-                </div>
-              </div>
-              <div className="h-16 rounded-xl bg-gradient-to-t from-indigo-50 to-transparent border border-indigo-100 mb-4" aria-hidden />
-              <span className="inline-block text-[11px] font-bold text-indigo-600 bg-indigo-50 rounded-full px-3 py-1">
-                Market Trend
-              </span>
-            </div>
-
-            {/* Floating 3D coins */}
-            <div className="coin-stage absolute -top-2 right-[8%] w-16 h-16 animate-float" aria-hidden>
-              <div className="coin-3d coin-3d--indigo text-2xl">
-                <div className="coin-face coin-face--indigo">₿</div>
-                <div className="coin-face coin-face--indigo coin-face--back">₿</div>
-              </div>
-            </div>
-            <div className="coin-stage absolute top-[38%] right-0 w-10 h-10 animate-float [animation-delay:-2.5s]" aria-hidden>
-              <div className="coin-3d coin-3d--indigo text-base">
-                <div className="coin-face coin-face--indigo">Ξ</div>
-                <div className="coin-face coin-face--indigo coin-face--back">Ξ</div>
-              </div>
-            </div>
-            <div className="coin-stage absolute bottom-4 right-[18%] w-20 h-20 animate-float [animation-delay:-4.5s]" aria-hidden>
-              <div className="coin-3d coin-3d--indigo text-3xl">
-                <div className="coin-face coin-face--indigo">◎</div>
-                <div className="coin-face coin-face--indigo coin-face--back">◎</div>
-              </div>
-            </div>
-
-            {/* Small ticker banner, floating on the side of the hero */}
-            <div className="absolute -bottom-8 -start-8 z-20 hidden lg:block animate-fade-up [animation-delay:520ms]">
-              <CryptoTicker />
-            </div>
+            <img
+              src={`${BASE_PATH}/illustrations/hero-dashboard.webp`}
+              alt=""
+              aria-hidden
+              className="relative z-10 w-full h-full object-contain animate-fade-up [animation-delay:200ms]"
+            />
           </div>
         </div>
       </section>
@@ -307,9 +279,12 @@ export default function HomePage() {
                     </span>
                   )}
                   <div className={`flex items-start gap-6 h-full ${c.alignEnd ? 'flex-row-reverse text-right' : ''}`}>
-                    <span className="glass-icon w-16 h-16 rounded-2xl text-3xl shrink-0" aria-hidden>
-                      {c.icon}
-                    </span>
+                    <img
+                      src={`${BASE_PATH}/illustrations/${c.icon}`}
+                      alt=""
+                      aria-hidden
+                      className="w-16 h-16 object-contain shrink-0"
+                    />
                     <div className="flex-1 flex flex-col h-full">
                       <div className="font-display font-black text-2xl mb-2">{c.label}</div>
                       <p className="opacity-85 leading-relaxed mb-6 max-w-md">{c.desc}</p>
@@ -389,9 +364,19 @@ export default function HomePage() {
         <Reveal className="max-w-6xl mx-auto">
           <div className="bg-deep-gradient rounded-3xl px-8 py-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" aria-hidden />
-            <div className="absolute inset-y-0 left-0 w-1/2 opacity-25 pointer-events-none hidden md:block" aria-hidden>
-              <div className="w-full h-full bg-gradient-to-r from-white/10 to-transparent" />
-            </div>
+            {/* Glass "chain block" illustration, real crop from the Figma export, on both edges */}
+            <img
+              src={`${BASE_PATH}/illustrations/community-left.webp`}
+              alt=""
+              aria-hidden
+              className="absolute inset-y-0 -left-8 h-full w-auto max-w-none opacity-70 pointer-events-none hidden md:block"
+            />
+            <img
+              src={`${BASE_PATH}/illustrations/community-right.webp`}
+              alt=""
+              aria-hidden
+              className="absolute inset-y-0 -right-8 h-full w-auto max-w-none opacity-70 pointer-events-none hidden md:block"
+            />
             <div className="relative">
               <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-4">
                 הצטרפו לקהילה!
@@ -434,10 +419,10 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <Reveal className="flex items-center justify-between mb-10 flex-wrap gap-4">
-            <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900">מדריכות אחרונות</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900">הדרכות אחרונות</h2>
             <a href="#" className="pill-btn pill-btn--violet py-2.5 px-5 text-sm">
               <span aria-hidden>↖</span>
-              <span>לכל המדריכים</span>
+              <span>לכל ההדרכות</span>
             </a>
           </Reveal>
 
@@ -479,9 +464,14 @@ export default function HomePage() {
         link so the UI is fully built and visually correct, without silently
         faking a working submission.
       */}
-      <section className="relative overflow-hidden">
-        <div className="bg-white pt-20 pb-28 px-4">
-          <Reveal className="max-w-4xl mx-auto text-center mb-10">
+      <section className="relative overflow-hidden px-4 pt-20 pb-24">
+        {/* Bottom half — purple gradient backdrop the white card overlaps onto, per spec */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-deep-gradient" aria-hidden>
+          <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" aria-hidden />
+        </div>
+
+        <div className="max-w-4xl mx-auto relative card rounded-3xl shadow-xl p-8 md:p-12">
+          <Reveal className="text-center mb-10">
             <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900 mb-3">
               יש לכם שאלה? <span className="text-indigo-600">אנחנו כאן בשבילכם.</span>
             </h2>
@@ -490,12 +480,12 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <Reveal delay={100} className="max-w-4xl mx-auto">
+          <Reveal delay={100}>
             <form
               action={`mailto:${CONTACT_EMAIL}`}
               method="get"
               encType="text/plain"
-              className="card rounded-3xl p-6 md:p-4 flex flex-col md:flex-row-reverse items-stretch gap-3"
+              className="flex flex-col md:flex-row-reverse items-stretch gap-3"
             >
               <label className="sr-only" htmlFor="contact-name">שם</label>
               <input
@@ -538,11 +528,6 @@ export default function HomePage() {
               השליחה תפתח את תוכנת המייל שלך אל {CONTACT_EMAIL} — טופס עם שליחה ישירה מהאתר ממתין להחלטת מוצר (ראו הערת TODO בקוד).
             </p>
           </Reveal>
-        </div>
-
-        {/* Bottom half — purple gradient with glass illustration, per spec */}
-        <div className="bg-deep-gradient h-24 md:h-32 relative">
-          <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" aria-hidden />
         </div>
       </section>
 
