@@ -1,7 +1,27 @@
-# Design System — état actuel (référence pré-Figma)
+# Design System — état actuel
 
-**Statut :** scaffold existant, prêt à recevoir les maquettes Figma (CRY-218).
-**But de ce doc :** donner une carte 1:1 de ce qui existe déjà (tokens, composants, grille) pour que le calage sur Figma, une fois reçu, consiste à **ajuster des valeurs** plutôt qu'à reconstruire une architecture.
+**Statut :** maquettes Figma reçues et appliquées (CRY-218, 8 captures haute résolution, homepage complète).
+**But de ce doc :** donner une carte 1:1 de ce qui existe (tokens, composants, grille).
+
+## 0. Mise à jour post-Figma (CRY-218)
+
+La homepage (`app/page.tsx`) a été reconstruite section par section contre les 8 captures reçues d'Israël. Nouveaux tokens confirmés visuellement :
+
+| Rôle | Nom Tailwind | Hex |
+|---|---|---|
+| Violet profond (fonds sombres : bannière communauté, footer, grandes cartes bento) | `deep-950…500` | `#1e1650` → `#5b3fb0` |
+| Or/jaune (CTA secondaire, chips en vedette) | `gold-400…600` | `#f0b429` → `#c98a0f` |
+| Crème (fond hero, cartes claires) | `cream-50,100` | `#fdf6e3`, `#fbf0d3` |
+
+Nouvelles classes utilitaires (`app/globals.css`) : `.bg-deep-gradient`, `.bg-cream-violet-gradient`, `.dot-grid` / `.dot-grid-dark` (watermark pointillé), `.glass-icon` (icône 3D glassmorphism), `.pill-btn` + variantes (`--violet`, `--gold`, `--white`, `--outline`) pour les boutons pilule avec glyphe `↖`, `.nav-pill` (header sticky), `.tag-chip` / `.tag-chip--solid` (nuage de tags).
+
+Police : les captures Figma utilisent une géométrique sans-serif grasse proche de ce que `font-display` (Frank Ruhl Libre → Heebo) rend déjà à fort poids — conservé tel quel, pas de changement de stack.
+
+Centralisation : `FORUM_URL`, `LEARN_URL`, `CONTACT_EMAIL` vivent désormais dans `lib/site-config.ts` (avant dupliqués dans `page.tsx`, `Navbar.tsx`, `Footer.tsx`).
+
+Questions encore ouvertes : backend du formulaire de contact (Formspree/Resend/API custom — en attente de réponse d'Israël/yankale), contenu réel des cartes "מדריכות אחרונות"/"חדשות אחרונות" (en attente de Shifra), pas de maquette mobile fournie (adaptation responsive best-effort à partir des patterns existants).
+
+---
 
 ---
 
