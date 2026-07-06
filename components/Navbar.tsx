@@ -25,16 +25,15 @@ export default function Navbar() {
   return (
     <header dir="rtl" className="glass-light text-sm py-3 px-4 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-        {/* Violet CTA pill — far right visually in RTL row order, first in DOM */}
-        <a
-          href={LEARN_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pill-btn pill-btn--violet py-2.5 px-5 text-sm shrink-0"
-        >
-          <span aria-hidden>↖</span>
-          <span className="hidden sm:inline">התחל ללמוד בחינם</span>
-        </a>
+        {/* Logo first in DOM so it lands on the visual right in the RTL row
+            (Figma: logo far right, CTA pill far left, left→right) */}
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
+          <img
+            src={`${BASE_PATH}/brand/logo-icon.webp`}
+            alt="קריפטו וועלט"
+            className="w-9 h-9 group-hover:scale-110 transition-transform"
+          />
+        </Link>
 
         {/* Horizontal nav pill with icons */}
         <nav className="nav-pill hidden md:flex flex-1 justify-center max-w-2xl mx-auto">
@@ -62,14 +61,16 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* Stylized "e"-spiral logo, far left visually */}
-        <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <img
-            src={`${BASE_PATH}/brand/logo-icon.webp`}
-            alt="קריפטו וועלט"
-            className="w-9 h-9 group-hover:scale-110 transition-transform"
-          />
-        </Link>
+        {/* Violet CTA pill last in DOM so it lands on the visual left */}
+        <a
+          href={LEARN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pill-btn pill-btn--violet py-2.5 px-5 text-sm shrink-0"
+        >
+          <span aria-hidden>↖</span>
+          <span className="hidden sm:inline">התחל ללמוד בחינם</span>
+        </a>
       </div>
     </header>
   )

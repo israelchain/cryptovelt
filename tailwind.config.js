@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Frank Ruhl Libre"', 'Heebo', 'serif'],
+        display: ['Heebo', 'Assistant', 'sans-serif'],
         hebrew: ['Heebo', 'Assistant', 'sans-serif'],
         sans: ['Heebo', 'Assistant', 'sans-serif'],
       },
