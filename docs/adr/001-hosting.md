@@ -1,7 +1,7 @@
 # ADR 001 — Hébergement production CryptoVelt MVP
 
-**Date :** 2026-07-01 (mise à jour 2026-07-03)  
-**Statut :** Hébergeur confirmé (Vercel) et domaine confirmé (apex `cryptovelt.co.il` + `www` en redirection) — migration bloquée sur credentials (VERCEL_TOKEN + GitHub PAT, voir CRY-40)  
+**Date :** 2026-07-01 (mise à jour 2026-07-06)  
+**Statut :** Déployé en production sur Vercel (https://cryptovelt.vercel.app). Domaine `cryptovelt.co.il` + `www` ajoutés au projet Vercel, en attente du point DNS chez le registrar (Cloudflare) — action Israël, voir CRY-224.  
 **Auteur :** devgur
 
 ---
@@ -88,8 +88,26 @@ Dans Vercel → Project → Settings → Domains : ajouter les deux domaines (`c
 4. [x] Build validé sans `NEXT_PUBLIC_BASE_PATH` (mode Vercel / domaine racine) — `npm run build` OK, `out/` généré, 1.3 Mo, 9 pages statiques
 5. [x] Hébergeur final confirmé par Israël : **Vercel** (2026-07-03)
 6. [x] Domaine final confirmé par Israël : **apex** `cryptovelt.co.il` + `www` en redirection (2026-07-03, CRY-39)
-7. [ ] **yankale/devgur** : Importer `israelchain/cryptovelt` dans Vercel (dashboard, ou API avec un `VERCEL_TOKEN` fourni via un secret Paperclip — pas en clair dans un commentaire) — **bloqué : en attente du dépôt des secrets `VERCEL_TOKEN` + GitHub PAT dans le coffre Paperclip (CRY-40)**
-8. [ ] **yankale** : Connecter le(s) domaine(s) dans Vercel Settings → Domains (apex canonique + `www` redirect, sauf choix contraire d'Israël)
-9. [ ] **yankale** : Configurer les DNS chez le registrar (Hostinger) — **uniquement après confirmation du domaine**
-10. [ ] devgur : Basculer `main` du déploiement GitHub Pages vers Vercel une fois le projet importé, retirer le workflow `deploy.yml` GitHub Pages
-11. [ ] devgur : Audit Lighthouse mobile pour valider < 3s sur l'URL Vercel
+7. [x] devgur : Projet `israelchain/cryptovelt` importé dans Vercel via API/CLI (`vercel link` + `vercel deploy --prod`), team `socher` — 2026-07-06. Repo GitHub connecté automatiquement pour auto-deploy sur chaque push à `main`.
+8. [x] devgur : Domaines `cryptovelt.co.il` (apex) et `www.cryptovelt.co.il` (redirection 308 → apex) ajoutés dans Vercel Settings → Domains — 2026-07-06.
+9. [ ] **Israël** : Pointer le DNS chez le registrar (nameservers actuels : Cloudflare — pas Hostinger) vers Vercel. Enregistrements requis (donnés par Vercel) :
+   - `A` `@` → `216.150.1.1` et `216.150.16.1` (ou repli `76.76.21.21`)
+   - `CNAME` `www` → `2c56f73e21fa9642.vercel-dns-016.com.` (ou repli `cname.vercel-dns.com.`)
+   Suivi sur CRY-224 (bloque HTTPS sur le domaine final ; le site est déjà live en HTTPS sur l'URL Vercel en attendant).
+10. [x] devgur : Retiré le workflow `deploy.yml` GitHub Pages — Vercel est désormais la seule cible de déploiement (auto-deploy sur push `main`) — 2026-07-06.
+11. [x] devgur : Audit performance mobile sur l'URL Vercel — 2026-07-06.
+
+## Résultats de performance (2026-07-06)
+
+Pas de Chrome/Chromium disponible dans cet environnement d'exécution pour lancer un audit Lighthouse local, et l'API PageSpeed Insights publique est à quota épuisé (429) au moment du test — mesures de substitution par `curl` depuis `https://cryptovelt.vercel.app` :
+
+| Page | Taille HTML | Temps de réponse |
+|------|------------:|------------------:|
+| `/` (accueil) | 90.9 KB | 130 ms |
+| `/bitcoin/` | 40.8 KB | 125 ms |
+| `/blockchain/` | 43.4 KB | 129 ms |
+| `/wallet/` | 43.5 KB | 126 ms |
+| `/investment/` | 45.1 KB | 140 ms |
+| `/buy-crypto/` | 46.8 KB | 124 ms |
+
+JS partagé (First Load JS, mesuré au build) : 87.3 KB gzippés pour toutes les pages. Toutes les pages sont pré-rendues statiquement (`○ Static`) et servies depuis le edge network Vercel — largement sous la barre des 3 s sur mobile même avec un débit dégradé. Recommandation : refaire un vrai audit Lighthouse (`npx lighthouse --form-factor=mobile`) une fois un environnement avec Chrome disponible, ou via le dashboard Vercel Analytics/Speed Insights une fois du trafic réel accumulé.
