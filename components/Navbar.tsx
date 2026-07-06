@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Briefcase, Puzzle, Wrench, Globe, LineChart, MessageCircle, BookOpen, Home } from 'lucide-react'
 import { FORUM_URL, LEARN_URL } from '@/lib/site-config'
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
@@ -6,15 +7,18 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 // Order matches the Figma nav pill, left→right visually (i.e. first item
 // closest to the CTA pill): ארנק, משחק, כלים, חדשות, מסחר, פורום, לימוד, בית.
 // Routes that don't have a live destination yet keep `soon`.
+// Icons are lucide components (not emoji): emoji glyphs render differently per
+// OS/browser font (Segoe Fluent vs Apple vs Noto Color Emoji), so the pastel
+// indigo look from the Figma export only ever showed up on the export machine.
 const navItems = [
-  { label: 'ארנק', icon: '💼', href: '/wallet' },
-  { label: 'משחק', icon: '🕹️', href: '#', soon: true },
-  { label: 'כלים', icon: '🔧', href: '#', soon: true },
-  { label: 'חדשות', icon: '🌐', href: '#', soon: true },
-  { label: 'מסחר', icon: '📈', href: '#', soon: true },
-  { label: 'פורום', icon: '💬', href: FORUM_URL, external: true },
-  { label: 'לימוד', icon: '📖', href: LEARN_URL, external: true },
-  { label: 'בית', icon: '🏠', href: '/' },
+  { label: 'ארנק', icon: Briefcase, href: '/wallet' },
+  { label: 'משחק', icon: Puzzle, href: '#', soon: true },
+  { label: 'כלים', icon: Wrench, href: '#', soon: true },
+  { label: 'חדשות', icon: Globe, href: '#', soon: true },
+  { label: 'מסחר', icon: LineChart, href: '#', soon: true },
+  { label: 'פורום', icon: MessageCircle, href: FORUM_URL, external: true },
+  { label: 'לימוד', icon: BookOpen, href: LEARN_URL, external: true },
+  { label: 'בית', icon: Home, href: '/' },
 ]
 
 export default function Navbar() {
@@ -42,7 +46,7 @@ export default function Navbar() {
                 title="בקרוב"
               >
                 <span>{item.label}</span>
-                <span aria-hidden>{item.icon}</span>
+                <item.icon aria-hidden className="w-4 h-4 text-deep-500" strokeWidth={2.25} />
               </span>
             ) : (
               <a
@@ -52,7 +56,7 @@ export default function Navbar() {
                 rel={item.external ? 'noopener noreferrer' : undefined}
               >
                 <span>{item.label}</span>
-                <span aria-hidden>{item.icon}</span>
+                <item.icon aria-hidden className="w-4 h-4 text-deep-500" strokeWidth={2.25} />
               </a>
             )
           )}

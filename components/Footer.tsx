@@ -51,31 +51,38 @@ function FooterColumn({ links }: { links: { label: string; href: string; externa
 
 export default function Footer() {
   return (
-    <footer dir="rtl" className="relative mt-0 bg-deep-gradient text-white overflow-hidden">
-      {/* Glass-block watermark illustration, decorative only */}
-      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" aria-hidden />
-      <div className="absolute bottom-0 left-0 w-[36rem] h-[20rem] opacity-20 pointer-events-none -translate-x-1/4" aria-hidden>
-        <div className="w-full h-full bg-gradient-to-tr from-white/20 to-transparent rounded-[3rem] rotate-12" />
+    <footer dir="rtl" className="relative mt-0">
+      {/* Purple panel: nav columns + logo, over the real glass-tile crop from
+          the Figma export (was a fake blurred-gradient div — replaced per the
+          CRY-218 fidelity pass). Bottom credit bar sits outside on white, as
+          in the design, instead of stacked inside the purple panel. */}
+      <div
+        className="relative text-white overflow-hidden bg-cover bg-left"
+        style={{ backgroundImage: `linear-gradient(to left, rgba(43,31,107,0.55), rgba(43,31,107,0.85)), url(${BASE_PATH}/illustrations/footer-texture.webp)` }}
+      >
+        <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" aria-hidden />
+
+        <div className="max-w-6xl mx-auto px-4 py-16 relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div className="col-span-2 order-last md:order-first">
+              <img
+                src={`${BASE_PATH}/brand/logo-lockup.webp`}
+                alt="קריפטו וועלט — עולם הקריפטו לחרדים"
+                className="h-12 w-auto mb-3"
+              />
+            </div>
+
+            <FooterColumn links={legalLinks} />
+            <FooterColumn links={platformLinks} />
+            <FooterColumn links={contentLinks} />
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16 relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
-          <div className="col-span-2 order-last md:order-first">
-            <img
-              src={`${BASE_PATH}/brand/logo-lockup.webp`}
-              alt="קריפטו וועלט — עולם הקריפטו לחרדים"
-              className="h-12 w-auto mb-3"
-            />
-          </div>
-
-          <FooterColumn links={legalLinks} />
-          <FooterColumn links={platformLinks} />
-          <FooterColumn links={contentLinks} />
-        </div>
-
-        <div className="border-t border-white/15 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+      <div className="bg-white text-ink-600">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
           <p>
-            פיתוח: <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white underline underline-offset-4">{CONTACT_EMAIL}</a>
+            פיתוח: <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-ink-900 underline underline-offset-4">{CONTACT_EMAIL}</a>
           </p>
           <p className="text-center">מיתוג, אפיון ועיצוב: tsivia</p>
           <p>© Crypto Velt 2026</p>
