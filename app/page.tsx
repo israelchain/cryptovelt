@@ -200,7 +200,7 @@ export default function HomePage() {
             </p>
 
             <div className="animate-fade-up [animation-delay:280ms] flex flex-col sm:flex-row items-center md:items-stretch justify-center md:justify-start gap-4 mb-10">
-              <a href="#platform" className="pill-btn pill-btn--gold py-3.5 px-7">
+              <a href="#platform" className="pill-btn pill-btn--gold">
                 <span aria-hidden>↖</span>
                 <span>גלה את הפלטפורמה</span>
               </a>
@@ -208,7 +208,7 @@ export default function HomePage() {
                 href={LEARN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill-btn pill-btn--violet py-3.5 px-7"
+                className="pill-btn pill-btn--violet"
               >
                 <span aria-hidden>↖</span>
                 <span>התחל ללמוד בחינם</span>
@@ -337,7 +337,7 @@ export default function HomePage() {
               href={LEARN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn pill-btn--violet py-3.5 px-7"
+              className="pill-btn pill-btn--violet"
             >
               <span aria-hidden>↖</span>
               <span>התחל ללמוד בחינם</span>
@@ -389,7 +389,7 @@ export default function HomePage() {
                   href={FORUM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pill-btn pill-btn--white py-3.5 px-7"
+                  className="pill-btn pill-btn--white"
                 >
                   <span aria-hidden>↖</span>
                   <span>הצטרפות לפורום</span>
@@ -398,7 +398,7 @@ export default function HomePage() {
                   href={FORUM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pill-btn pill-btn--gold py-3.5 px-7"
+                  className="pill-btn pill-btn--gold"
                 >
                   <span aria-hidden>↖</span>
                   <span>הצטרפות לקבוצת הוואטסאפ של הקהילה</span>
@@ -420,7 +420,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <Reveal className="flex items-center justify-between mb-10 flex-wrap gap-4">
             <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900">הדרכות אחרונות</h2>
-            <a href="#" className="pill-btn pill-btn--violet py-2.5 px-5 text-sm">
+            <a href="#" className="pill-btn pill-btn--violet text-sm">
               <span aria-hidden>↖</span>
               <span>לכל ההדרכות</span>
             </a>
@@ -440,7 +440,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <Reveal className="flex items-center justify-between mb-10 flex-wrap gap-4">
             <h2 className="font-display text-3xl md:text-4xl font-black text-ink-900">חדשות אחרונות</h2>
-            <a href="#" className="pill-btn pill-btn--violet py-2.5 px-5 text-sm">
+            <a href="#" className="pill-btn pill-btn--violet text-sm">
               <span aria-hidden>↖</span>
               <span>לכל החדשות</span>
             </a>
@@ -519,7 +519,7 @@ export default function HomePage() {
                 placeholder="הודעה"
                 className="flex-[2] min-w-0 rounded-xl border border-slate-200 px-4 py-3 text-sm placeholder:text-ink-400 focus:outline-none focus:ring-2 focus:ring-indigo-200"
               />
-              <button type="submit" className="pill-btn pill-btn--violet py-3 px-6 justify-center shrink-0">
+              <button type="submit" className="pill-btn pill-btn--violet justify-center shrink-0">
                 <span aria-hidden>↖</span>
                 <span>שליחה</span>
               </button>

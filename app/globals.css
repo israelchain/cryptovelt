@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;600;700&family=Rubik:wght@300;400;500;700;800;900&display=swap');
 
 /* ── Design tokens ─────────────────────────────────────────────
    Light theme inspired by bitcoin.com: white canvas, bold ink
    typography, bitcoin-orange + sky accents, soft floating cards. */
 :root {
   --font-hebrew: 'Heebo', 'Assistant', 'Segoe UI', Arial, sans-serif;
-  --font-display: 'Heebo', 'Assistant', sans-serif;
+  /* Figma spec uses "Discovery_Fs" for headings — a licensed Hebrew font we
+     don't have files for. Rubik is the closest free Google Fonts match
+     (geometric, heavy weights, Hebrew support). Swap for real files once
+     Israel's zip/design/ font export lands. CRY-235. */
+  --font-display: 'Rubik', 'Heebo', 'Assistant', sans-serif;
 
   /* Canvas & surfaces */
   --color-bg: #ffffff;
@@ -19,22 +23,25 @@
   --color-border: #e6eaf2;
   --color-border-strong: #d7dde9;
 
-  /* Ink (text) */
-  --color-ink: #0b1426;
-  --color-ink-soft: #3d4a63;
-  --color-ink-muted: #64748b;
-  --color-ink-faint: #94a3b8;
+  /* Ink (text) — exact Figma "כהה" dark token (#1C1C1C), CRY-235 */
+  --color-ink: #1C1C1C;
+  --color-ink-soft: #3f3f3f;
+  --color-ink-muted: #5a5a5a;
+  --color-ink-faint: #a3a3a3;
 
   /* Accents */
-  --color-orange: #f7931a;      /* bitcoin orange */
+  --color-orange: #f7931a;      /* bitcoin orange (coin illustration only) */
   --color-orange-deep: #e07f0a;
   --color-orange-soft: #fff3e2;
-  --color-sky: #0ea5e9;
-  --color-sky-soft: #e8f6fe;
-  --color-violet: #8b5cf6;
+  --color-sky: #4A4FD9;         /* exact Figma "כחול" token, CRY-235 */
+  --color-sky-soft: #eef0fc;
+  --color-violet: #6D4FBE;      /* exact Figma gradient inner stop, CRY-235 */
   --color-violet-soft: #f1ebfe;
   --color-green: #0ac18e;
   --color-green-soft: #e6faf4;
+  --color-gold: #FFC712;        /* exact Figma "צהוב" token, CRY-235 */
+  --color-warm-white: #FFF6E6;  /* exact Figma "לבן" token, CRY-235 */
+  --color-mist: #F6F7FA;        /* exact Figma "בהיר" token, CRY-235 */
 
   /* Elevation */
   --shadow-card: 0 2px 8px rgba(11, 20, 38, 0.05), 0 12px 32px -12px rgba(11, 20, 38, 0.12);
@@ -132,7 +139,7 @@ body {
 }
 
 .text-gradient-sky {
-  background: linear-gradient(120deg, #0284c7, #8b5cf6 60%, #0ea5e9);
+  background: linear-gradient(120deg, #262A78, #6D4FBE 60%, #4A4FD9);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -188,15 +195,15 @@ body {
   background-position: center;
 }
 
-/* ── Figma "deep violet" gradient surfaces ──────────────────────
-   Used on: large bento cards (מסחר/חדשות), community banner, footer.
-   Confirmed against screenshots: navy-indigo → mid violet, ~135deg. */
+/* ── Figma "GRADIENT" token — exact radial stops, live-extracted via
+   mcp__figma__get_figma_data (node 2001:56 / 2081:107), CRY-235.
+   Used on: large bento cards (מסחר/חדשות), community banner, footer, CTA pills. */
 .bg-deep-gradient {
-  background: linear-gradient(135deg, #2b1f6b 0%, #3d2d8f 50%, #5b3fb0 100%);
+  background: radial-gradient(circle at 28% 2%, #6D4FBE 0%, #3A40B7 65%, #262A78 100%);
 }
 
 .bg-deep-gradient-soft {
-  background: linear-gradient(120deg, #372a80 0%, #4a37a0 100%);
+  background: radial-gradient(circle at 2% 19%, #6D4FBE 0%, #3A40B7 51%, #262A78 100%);
 }
 
 /* Cream → light-violet gradient (used on the "לימוד והכשרה" bento card) */
@@ -228,17 +235,25 @@ body {
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* ── Pill CTA with leading arrow glyph (↖) — the recurring Figma button ── */
+/* ── Pill CTA with leading arrow glyph (↖) — the recurring Figma button.
+   Padding/gap = exact Figma button spec (layout_29991bd2, node 2001:56):
+   16px vertical / 32px horizontal padding, 24px internal gap. CRY-235. ── */
 .pill-btn {
-  @apply inline-flex items-center gap-2 rounded-full font-bold transition-all;
+  @apply inline-flex items-center rounded-full font-bold transition-all;
+  padding: 16px 32px;
+  gap: 24px;
 }
 
 .pill-btn--violet {
-  @apply bg-gradient-to-l from-deep-900 to-deep-500 text-white shadow-glow-indigo hover:-translate-y-0.5;
+  @apply hover:-translate-y-0.5;
+  background: radial-gradient(circle at 28% 2%, #6D4FBE 0%, #3A40B7 65%, #262A78 100%);
+  color: #F6F7FA;
+  box-shadow: 0 12px 32px -10px rgba(74, 79, 217, 0.45);
 }
 
 .pill-btn--gold {
-  @apply bg-gold-400 hover:bg-gold-500 text-ink-900 shadow-glow-gold hover:-translate-y-0.5;
+  @apply bg-gold-400 hover:bg-gold-500 shadow-glow-gold hover:-translate-y-0.5;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .pill-btn--white {

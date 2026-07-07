@@ -66,7 +66,7 @@ export default function Navbar() {
           href={LEARN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="pill-btn pill-btn--violet py-2.5 px-5 text-sm shrink-0"
+          className="pill-btn pill-btn--violet text-sm shrink-0"
         >
           <span aria-hidden>↖</span>
           <span className="hidden sm:inline">התחל ללמוד בחינם</span>

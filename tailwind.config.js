@@ -8,34 +8,55 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Heebo', 'Assistant', 'sans-serif'],
+        // Figma "Discovery_Fs" heading font has no free web license — Rubik
+        // is the closest available Google Fonts match. Body keeps Heebo,
+        // close to Figma's "Polin" body font at Light weight. CRY-235.
+        display: ['Rubik', 'Heebo', 'Assistant', 'sans-serif'],
         hebrew: ['Heebo', 'Assistant', 'sans-serif'],
         sans: ['Heebo', 'Assistant', 'sans-serif'],
       },
       colors: {
-        // Ink typography on white canvas
+        // Ink typography on white canvas — 900 is the exact Figma "כהה" dark
+        // token (#1C1C1C), extracted live via mcp__figma__get_figma_data
+        // (fileKey QmrAocByUD7qxzxq9Rc7uu, node 2001:56) — CRY-235.
         ink: {
-          950: '#060b16',
-          900: '#0b1426',
-          800: '#16233d',
-          700: '#243352',
-          600: '#3d4a63',
-          500: '#64748b',
-          400: '#94a3b8',
+          950: '#141414',
+          900: '#1C1C1C',
+          800: '#2b2b2b',
+          700: '#3f3f3f',
+          600: '#5a5a5a',
+          500: '#7a7a7a',
+          400: '#a3a3a3',
         },
+        // Primary accent — exact Figma "כחול" token (#4A4FD9). Overrides
+        // Tailwind's built-in `indigo` scale below too, since most components
+        // already use text-indigo-*/border-indigo-* utilities directly.
         brand: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#eef0fc',
+          100: '#dce0f9',
+          200: '#b9c1f3',
+          300: '#96a3ed',
+          400: '#7784e3',
+          500: '#4A4FD9',
+          600: '#3a3fc0',
+          700: '#2e32a0',
+          800: '#242780',
+          900: '#1b1e63',
         },
-        // Bitcoin orange scale
+        indigo: {
+          50: '#eef0fc',
+          100: '#dce0f9',
+          200: '#b9c1f3',
+          300: '#96a3ed',
+          400: '#7784e3',
+          500: '#4A4FD9',
+          600: '#3a3fc0',
+          700: '#2e32a0',
+          800: '#242780',
+          900: '#1b1e63',
+        },
+        // Bitcoin orange scale — kept for the spinning-coin illustration only;
+        // Figma has no orange token (its accent roles are blue/yellow/gradient).
         btc: {
           50: '#fff8ef',
           100: '#fff3e2',
@@ -54,24 +75,40 @@ module.exports = {
           500: '#0ac18e',
           600: '#059f75',
         },
-        // Deep violet/indigo — dark gradient sections (community banner, footer,
-        // large bento cards), confirmed against Figma screenshots (CRY-218).
+        // Deep violet/indigo gradient — exact Figma GRADIENT token stops
+        // (radial-gradient(circle at 28% 2%, #6D4FBE 0%, #3A40B7 65%, #262A78 100%)),
+        // used on: community banner, footer, large bento cards. CRY-235.
         deep: {
-          950: '#1e1650',
-          900: '#2b1f6b',
-          700: '#3d2d8f',
-          500: '#5b3fb0',
+          950: '#1c1f5c',
+          900: '#262A78',
+          700: '#3A40B7',
+          500: '#6D4FBE',
         },
-        // Warm gold — secondary CTA pills + accent chips.
+        // Yellow/gold — exact Figma "צהוב" token (#FFC712).
         gold: {
-          400: '#f0b429',
-          500: '#e5a318',
-          600: '#c98a0f',
+          400: '#FFC712',
+          500: '#e5ae00',
+          600: '#c79600',
+        },
+        // Warm white — exact Figma "לבן" token (#FFF6E6), used as text color
+        // on dark/blue/gold fills instead of pure white.
+        warm: {
+          DEFAULT: '#FFF6E6',
+        },
+        // Light background tint — exact Figma "בהיר" token (#F6F7FA).
+        mist: {
+          DEFAULT: '#F6F7FA',
         },
         cream: {
           50: '#fdf6e3',
           100: '#fbf0d3',
         },
+      },
+      borderRadius: {
+        // Figma "cards/color blocks" radius = 30px (design-system swatches,
+        // node 2001:56) — large image rectangles on the homepage use 32px,
+        // close enough to share this token. CRY-235.
+        '3xl': '30px',
       },
       boxShadow: {
         card: '0 2px 8px rgba(11, 20, 38, 0.05), 0 12px 32px -12px rgba(11, 20, 38, 0.12)',
@@ -80,9 +117,9 @@ module.exports = {
         'glow-orange-lg': '0 16px 44px -8px rgba(247, 147, 26, 0.6)',
         'glow-sky': '0 12px 32px -10px rgba(14, 165, 233, 0.4)',
         'glow-green': '0 12px 32px -10px rgba(10, 193, 142, 0.5)',
-        'glow-indigo': '0 12px 32px -10px rgba(79, 70, 229, 0.45)',
-        'glow-indigo-lg': '0 16px 44px -8px rgba(79, 70, 229, 0.55)',
-        'glow-gold': '0 12px 32px -10px rgba(240, 180, 41, 0.55)',
+        'glow-indigo': '0 12px 32px -10px rgba(74, 79, 217, 0.45)',
+        'glow-indigo-lg': '0 16px 44px -8px rgba(74, 79, 217, 0.55)',
+        'glow-gold': '0 12px 32px -10px rgba(255, 199, 18, 0.55)',
       },
       keyframes: {
         float: {
