@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קריפטו וועלט — עולם הקריפטו לחרדים</title>
+<meta name="description" content="הפלטפורמה הדיגיטלית הראשונה בישראל שמרכזת את עולם הקריפטו עבור הציבור החרדי: פורום, מסלולי לימוד, כלים, חדשות ועוד.">
+<link rel="preload" href="assets/fonts/Discovery_Fs-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Talent_FS-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 15 15" fill="none">
+    <path d="M10.5 1.5H1.5V10.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1.5 1.5L13.5 13.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a href="index.html#hero" class="logo">
+      <img src="assets/images/logo-header.svg" alt="קריפטו וועלט — עולם הקריפטו לחרדים">
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="ניווט ראשי">
+      <ul>
+        <li><a href="index.html#guides"><img src="assets/images/icons/book-open-bookmark.svg" alt=""><span>למידה</span></a></li>
+        <li><a href="index.html#forum"><img src="assets/images/icons/comments-dots.svg" alt=""><span>פורום</span></a></li>
+        <li><a href="index.html#trade"><img src="assets/images/icons/chart-line-dots.svg" alt=""><span>מסחר</span></a></li>
+        <li><a href="index.html#news"><img src="assets/images/icons/globe-earth.svg" alt=""><span>חדשות</span></a></li>
+        <li><a href="index.html#tools"><img src="assets/images/icons/tool.svg" alt=""><span>כלים</span></a></li>
+        <li><a href="index.html#game"><img src="assets/images/icons/puzzle.svg" alt=""><span>משחק</span></a></li>
+        <li><a href="index.html#wallet"><img src="assets/images/icons/wallet.svg" alt=""><span>ארנק</span></a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html#contact" class="btn btn-gradient header-cta">
+      <span>התחל ללמוד בחינם</span>
+      <svg class="arw"><use href="#i-arrow"/></svg>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-card">
+        <img class="hero-grid" src="assets/images/deco/grid-hero.svg" alt="" aria-hidden="true">
+
+        <div class="hero-text">
+          <h1 class="reveal" data-reveal="right">כל מה שצריך לדעת על קריפטו, <span class="accent">במקום אחד</span><span class="dot">.</span></h1>
+          <p class="reveal" data-reveal="right" style="--rd:.15s">כאן תמצא מדריכים מקיפים, חדשות ועדכונים, כלים שימושיים ותוכן מקצועי, כל מה שתצטרך לדעת על קריפטו!</p>
+          <div class="hero-cta reveal" data-reveal="up" style="--rd:.3s">
+            <a href="index.html#contact" class="btn btn-gradient">
+              <span>התחל ללמוד בחינם</span>
+              <svg class="arw"><use href="#i-arrow"/></svg>
+            </a>
+            <a href="index.html#features" class="btn btn-yellow">
+              <span>גלה את הפלטפורמה</span>
+              <svg class="arw"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="heroVisual">
+          <div class="hero-tilt" id="heroTilt">
+            <img class="main-mock reveal" data-reveal="zoom" src="assets/images/mockup-large.png" alt="לוח בקרה של פלטפורמת קריפטו וועלט">
+            <img class="side-mock right reveal" data-reveal="left" style="--rd:.25s" src="assets/images/mockup-right.png" alt="">
+            <img class="side-mock left reveal" data-reveal="right" style="--rd:.35s" src="assets/images/mockup-left.png" alt="">
+          </div>
+          <img class="coin coin-eth float-el pop" style="--fd:7s; --pd:.5s" data-parallax="-0.06" src="assets/images/coins/coin-eth.webp" alt="">
+          <img class="coin coin-usdt float-el pop" style="--fd:5.5s; --fdel:.8s; --pd:.65s" data-parallax="0.05" src="assets/images/coins/coin-usdt.webp" alt="">
+          <img class="coin coin-btc float-el pop" style="--fd:6s; --fdel:.4s; --pd:.8s" data-parallax="0.09" src="assets/images/coins/coin-btc.webp" alt="מטבע ביטקוין">
+          <img class="coin coin-sol-blur float-el pop" style="--fd:8s; --fdel:1.2s; --pd:.95s" data-parallax="-0.12" src="assets/images/coins/coin-sol-blur.webp" alt="">
+        </div>
+
+        <img class="coin coin-sol-edge float-el" style="--fd:9s" data-parallax="0.07" src="assets/images/coins/coin-sol.webp" alt="">
+
+        <div class="hero-stats reveal" data-reveal="up" style="--rd:.45s">
+          <div class="stat"><b data-count="1500" data-prefix="+">0</b><span>חברים בקהילה</span></div>
+          <div class="sep" aria-hidden="true"></div>
+          <div class="stat"><b data-count="500" data-prefix="+">0</b><span>מאמרים ומדריכים</span></div>
+          <div class="sep" aria-hidden="true"></div>
+          <div class="stat"><b data-count="4">0</b><span>מסלולי לימוד</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES BENTO ============ -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="up">
+        <h2>כל מה שמחכה לך <span class="accent">בפלטפורמה</span></h2>
+        <p>למד, התעדכן, חקור והשתמש בכלים שיעזרו לך להבין את עולם הקריפטו — הכל מחולק לנושאים ברורים, כדי שתוכל למצוא בדיוק את מה שמעניין אותך.</p>
+      </div>
+
+      <div class="bento" data-stagger>
+        <div class="bento-card c-trade reveal" data-reveal="up" id="trade">
+          <img class="cat-icon" src="assets/images/categories/cat-3.webp" alt="" width="547" height="600">
+          <div class="bento-body">
+            <h3>מסחר</h3>
+            <p>סביבת מסחר וירטואלית שמאפשרת לתרגל אסטרטגיות, להכיר את השוק ולצבור ניסיון מעשי בלי לסכן כסף אמיתי.</p>
+            <a href="index.html#" class="btn-link"><span>התחל ללמוד בחינם</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-learn reveal" data-reveal="up" id="guides-card">
+          <img class="cat-icon" src="assets/images/categories/cat-2.webp" alt="" width="950" height="912">
+          <div class="bento-body">
+            <h3>למידה והכשרה</h3>
+            <p>קורסים, מדריכים ומסלולי לימוד מסודרים מהצעד הראשון ועד לנושאים מתקדמים.</p>
+            <a href="index.html#" class="btn-link"><span>התחל ללמוד בחינם</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-forum reveal" data-reveal="up" id="forum">
+          <img class="cat-icon" src="assets/images/categories/cat-5.webp" alt="" width="600" height="577">
+          <div class="bento-body">
+            <h3>פורום</h3>
+            <p>המקום לשאול, לדבר ולהתייעץ עם הקהילה.</p>
+            <a href="index.html#" class="btn-link"><span>לעמוד הפורום</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-wallet reveal" data-reveal="up" id="wallet">
+          <img class="cat-icon" src="assets/images/categories/cat-6.webp" alt="" width="600" height="577">
+          <div class="bento-body">
+            <h3>ארנק</h3>
+            <p>ניהול נכסים דיגיטליים בצורה בטוחה.</p>
+            <a href="index.html#" class="btn-link"><span>לארנק</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-tools reveal" data-reveal="up" id="tools">
+          <img class="cat-icon" src="assets/images/categories/cat-7.webp" alt="" width="473" height="454">
+          <div class="bento-body">
+            <h3>כלים</h3>
+            <a href="index.html#" class="btn-link"><span>לעמוד הכלים</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-games reveal" data-reveal="up" id="game">
+          <img class="cat-icon" src="assets/images/categories/cat-1.webp" alt="" width="473" height="454">
+          <div class="bento-body">
+            <h3>משחק</h3>
+            <a href="index.html#" class="btn-link"><span>למשחק</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="bento-card c-news reveal" data-reveal="up">
+          <img class="cat-icon" src="assets/images/categories/cat-4.webp" alt="" width="419" height="600">
+          <div class="bento-body">
+            <h3>חדשות</h3>
+            <p>חדשות, עדכונים וניתוחים מעולם הקריפטו המתעדכנים באופן שוטף, עם תקצירים קצרים לצד תוכן מעמיק למי שרוצה להעמיק.</p>
+            <a href="index.html#news" class="btn-link"><span>לעמוד החדשות</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about-section" id="about">
+    <img class="about-coin btc float-el" data-parallax="-0.08" src="assets/images/coins/coin-btc.webp" alt="">
+    <img class="about-coin eth float-el" style="--fd:8s" data-parallax="0.06" src="assets/images/coins/coin-eth.webp" alt="">
+    <img class="about-grid" src="assets/images/deco/grid-about.svg" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="about">
+        <div class="about-title reveal" data-reveal="right">
+          <h2>עולם הקריפטו <span class="accent">לחרדים</span></h2>
+          <a href="index.html#contact" class="btn btn-gradient">
+            <span>התחל ללמוד בחינם</span>
+            <svg class="arw"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+        <div class="about-text reveal" data-reveal="left">
+          <p>
+            קריפטו וועלט היא <span class="hl">הפלטפורמה הדיגיטלית הראשונה בישראל שמרכזת את עולם הקריפטו עבור
+            הציבור החרדי</span> בשפה פשוטה, בערכים שמתאימים לאורח החיים החרדי ובגישה שמאפשרת
+            לכל אחד ללמוד ולהתקדם בביטחון.
+          </p>
+          <p>
+            מעבר <span class="hl">לקהילה פעילה של למעלה מ־1,500 חברים</span>, תמצאו אצלנו פורום מקצועי, מסלולי לימוד,
+            קורסים, מאמרים, פודקאסטים, כלים שימושיים ועדכונים שוטפים מהעולם. כל התוכן נבנה כדי
+            להפוך תחום שנראה מורכב לנגיש, ברור ומעשי.
+          </p>
+          <p>
+            אנחנו מאמינים שידע הוא הבסיס לקבלת החלטות נכונות. לכן כל התכנים מוגשים בצורה פשוטה
+            ומסודרת, עם ליווי הלכתי, דגש על התנהלות אחראית והימנעות מסיכונים מיותרים, כך שכל אחד
+            יכול ללמוד, להבין ולהתקדם בקצב שלו.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BADGES + COMMUNITY ============ -->
+  <section class="section tight community-section">
+    <div class="container">
+      <div class="badge-cloud" data-stagger aria-hidden="true">
+        <span class="reveal" data-reveal="pop">תוכן איכותי</span>
+        <span class="reveal" data-reveal="pop">קהילה פעילה</span>
+        <span class="reveal" data-reveal="pop">לציבור החרדי</span>
+        <span class="reveal filled" data-reveal="pop">ידע מקצועי</span>
+        <span class="reveal" data-reveal="pop">ליווי הלכתי</span>
+        <span class="reveal" data-reveal="pop">הכל במקום אחד</span>
+        <span class="reveal filled" data-reveal="pop">פורום מקצועי</span>
+        <span class="reveal" data-reveal="pop">כלים פרקטיים</span>
+        <span class="reveal" data-reveal="pop">למתחילים ולמתקדמים</span>
+        <span class="reveal" data-reveal="pop">חדשות הקריפטו</span>
+      </div>
+
+      <div class="community reveal" data-reveal="up">
+        <div class="community-bg" aria-hidden="true">
+          <img class="community-pan" src="assets/images/bg-community-panels.webp" alt="">
+        </div>
+        <h2>הצטרפו לקהילה!</h2>
+        <p>1,500+ חברים כבר כאן. שואלים, לומדים, משקיעים ביחד.</p>
+        <div class="cta-row">
+          <a href="index.html#" class="btn btn-yellow">
+            <span>הצטרפות לקבוצת הוואטסאפ של הקהילה</span>
+            <svg class="arw"><use href="#i-arrow"/></svg>
+          </a>
+          <a href="index.html#" class="btn btn-white">
+            <span>הצטרפות לפורום</span>
+            <svg class="arw"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDES ============ -->
+  <section class="section cards-section" id="guides">
+    <img class="section-coin right float-el" style="--fd:9s" data-parallax="0.05" src="assets/images/coins/coin-eth.webp" alt="">
+    <div class="container">
+      <div class="section-header-row reveal" data-reveal="up">
+        <h2>הדרכות <span class="accent">אחרונות</span></h2>
+        <a href="index.html#" class="btn btn-gradient btn-sm">
+          <span>לכל ההדרכות</span>
+          <svg class="arw"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+
+      <div class="cards-grid" data-stagger>
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/guide-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>מה זה בלוקצ'יין?</h3>
+            <p>הסבר פשוט וברור על הטכנולוגיה שמאחורי עולם הקריפטו, בלי מושגים מסובכים ועם דוגמאות מהחיים.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני 4 ימים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/guide-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>איך פותחים ארנק קריפטו בבטחה</h3>
+            <p>מדריך שלב אחר שלב לפתיחת ארנק דיגיטלי, גיבוי מפתחות ושמירה על הכספים שלכם.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני שבוע</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/guide-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>עשרת הכללים לניהול סיכונים בהשקעות קריפטו</h3>
+            <p>עקרונות יסוד להתנהלות אחראית בשוק התנודתי, כדי להשקיע בביטחון ובראש שקט.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני שבועיים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="section cards-section news-section" id="news">
+    <img class="section-coin left float-el" style="--fd:8s" data-parallax="-0.05" src="assets/images/coins/coin-btc.webp" alt="">
+    <div class="container">
+      <div class="section-header-row reveal" data-reveal="up">
+        <h2>חדשות <span class="accent">אחרונות</span></h2>
+        <a href="index.html#" class="btn btn-gradient btn-sm">
+          <span>לכל החדשות</span>
+          <svg class="arw"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+
+      <div class="cards-grid" data-stagger>
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>השבוע בקריפטו: ביטקוין מזנק, את'ריום מתחזק והשוק מתעורר</h3>
+            <p>לאחר שבועות של יציבות יחסית, שוק הקריפטו מציג עליות חדות. ריכזנו את ההתפתחויות המרכזיות.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני שעתיים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>רגולציה חדשה: מה המשמעות עבור המשקיעים בישראל</h3>
+            <p>סקירת השינויים הרגולטוריים האחרונים והשפעתם על הציבור החרדי.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני יום</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>סולנה שוברת שיא: מה עומד מאחורי העלייה</h3>
+            <p>ניתוח קצר של הגורמים לעלייה החדה ברשת סולנה בשבוע האחרון.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני יום</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>שלוש מגמות שיעצבו את שוק הקריפטו בשנה הקרובה</h3>
+            <p>התחזיות של המומחים לקראת השנה החדשה, ומה כדאי לעקוב אחריו.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני 3 ימים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>כך משפיעה האינפלציה העולמית על מחירי הביטקוין</h3>
+            <p>הסבר מעמיק על הקשר בין הכלכלה הגלובלית לשוק המטבעות הדיגיטליים.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני 4 ימים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article-card reveal" data-reveal="up">
+          <a href="index.html#" class="thumb" tabindex="-1" aria-hidden="true"><img src="assets/images/news-card.jpg" alt="" loading="lazy"></a>
+          <div>
+            <h3>אימות דו-שלבי: למה זה חובה בכל חשבון קריפטו</h3>
+            <p>טיפים לאבטחת החשבונות שלכם מפני פריצות וגניבת זהות.</p>
+          </div>
+          <div class="meta">
+            <span class="date">לפני 5 ימים</span>
+            <a href="index.html#" class="btn-link"><span>קרא עוד</span><svg class="arw"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-card reveal" data-reveal="up">
+        <h2>יש לכם שאלה?<span class="accent">אנחנו כאן בשבילכם.</span></h2>
+        <p>השאירו פרטים ונחזור אליכם עם כל המידע שתצטרכו כדי להתחיל בצורה בטוחה, ברורה ונכונה.</p>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <input type="text" id="f-name" name="name" placeholder=" " required autocomplete="name">
+            <label for="f-name">שם</label>
+          </div>
+          <div class="field">
+            <input type="tel" id="f-phone" name="phone" placeholder=" " autocomplete="tel">
+            <label for="f-phone">טלפון</label>
+          </div>
+          <div class="field">
+            <input type="email" id="f-email" name="email" placeholder=" " required autocomplete="email">
+            <label for="f-email">מייל</label>
+          </div>
+          <div class="field">
+            <input type="text" id="f-message" name="message" placeholder=" ">
+            <label for="f-message">הודעה</label>
+          </div>
+          <button type="submit" class="btn btn-gradient">
+            <span>שליחה</span>
+            <svg class="arw"><use href="#i-arrow"/></svg>
+          </button>
+        </form>
+        <p class="form-note" id="formNote" role="status">תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-banner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img class="logo-svg" src="assets/images/logo-footer.svg" alt="קריפטו וועלט — עולם הקריפטו לחרדים">
+        </div>
+
+        <nav class="footer-col" aria-label="פלטפורמה">
+          <ul>
+            <li><a href="index.html#forum"><span>פורום</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#guides"><span>לימוד</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#news"><span>חדשות</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="כלים">
+          <ul>
+            <li><a href="index.html#game"><span>משחק</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#wallet"><span>ארנק</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#tools"><span>כלים</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#trade"><span>מסחר</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="אתר">
+          <ul>
+            <li><a href="index.html#"><span>תקנון אתר</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#"><span>מדיניות פרטיות</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="index.html#"><span>הצהרת נגישות</span><svg class="arw"><use href="#i-arrow"/></svg></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© Crypto Velt 2026</span>
+      <span class="credit">מיתוג, אפיון ועיצוב: <img src="assets/images/tsiwa-logo.svg" alt="tsiwa" class="tsiwa"></span>
+      <span>פיתוח:</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="חזרה למעלה">
+  <svg class="arw" viewBox="0 0 15 15" fill="none" width="16" height="16"><path d="M7.5 13V2M2.5 6.5L7.5 1.5L12.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
