@@ -20,7 +20,7 @@ Formes/espacements (confirmés sur les deux frames) :
 - Boutons pilule : `padding: 16px 32px`, `gap: 24px`, `border-radius: 100px` → `.pill-btn` dans `globals.css` porte maintenant ces valeurs exactes (remplace les `py-3.5 px-7` ad-hoc dispersés dans `page.tsx`/`Navbar.tsx`).
 - Cartes/blocs couleur : `border-radius: 30px` → override Tailwind `borderRadius['3xl']` (`24px` → `30px`), donc tout usage de `rounded-3xl` est maintenant exact.
 
-**Typographie — écart connu et assumé :** Figma spécifie "Discovery_Fs" (titres) et "Polin" (corps), deux polices hébraïques payantes/propriétaires. Nous n'avons pas les fichiers de police (licence). En attendant le zip d'Israël ou un export de polices web, `font-display` utilise **Rubik** (Google Fonts, la police gratuite la plus proche visuellement — géométrique, graisses lourdes disponibles, support hébreu) au lieu de Frank Ruhl Libre/Heebo. Le corps de texte reste sur Heebo. **Ne pas considérer ce point comme résolu** — remplacer par les vrais fichiers dès qu'ils arrivent.
+**Typographie — écart résolu (CRY-237, 2026-07-07) :** les vraies polices "Discovery Fs" (titres) et "Talent FS" (corps) ont été récupérées via le mirror `nouvelle-base-israel` (fichiers woff/woff2 réels, extraits du site statique reconstruit par Israël sur new.cryptovelt.cloud) et sont maintenant chargées en `@font-face` dans `app/globals.css` (fichiers dans `public/assets/fonts/`). L'approximation Rubik/Heebo décrite ci-dessous est obsolète, conservée seulement comme historique.
 
 ## 0. Mise à jour post-Figma (CRY-218)
 
@@ -55,10 +55,10 @@ Questions encore ouvertes : backend du formulaire de contact (Formspree/Resend/A
 
 | Rôle | Famille Tailwind | Police |
 |---|---|---|
-| Titres (`font-display`) | `font-display` | Rubik → Heebo → Assistant → sans-serif *(approximation de "Discovery_Fs" Figma, voir §-1 — fichiers de police réels manquants)* |
-| Corps / UI (`font-hebrew` / `font-sans`) | `font-sans` (défaut) | Heebo → Assistant → sans-serif *(approximation de "Polin" Figma)* |
+| Titres (`font-display`) | `font-display` | Discovery Fs → Heebo → Assistant → sans-serif *(vrais fichiers, CRY-237 — remplace l'approximation Rubik)* |
+| Corps / UI (`font-hebrew` / `font-sans`) | `font-sans` (défaut) | Talent FS → Heebo → Assistant → sans-serif *(vrais fichiers, CRY-237 — remplace l'approximation Heebo-only)* |
 
-Écart connu et documenté en §-1 : remplacer `--font-display` / `tailwind.config.js:fontFamily.display` par les vrais fichiers "Discovery_Fs"/"Polin" dès qu'ils sont fournis (licence requise, aucun composant n'a la police en dur donc le swap sera local à ces deux points).
+Résolu en CRY-237 (voir §-1) : `--font-display`/`--font-hebrew` (`app/globals.css`) et `tailwind.config.js:fontFamily` pointent maintenant sur les vrais fichiers Discovery Fs / Talent FS.
 
 ## 3. Couleurs (`tailwind.config.js` + `globals.css :root`)
 

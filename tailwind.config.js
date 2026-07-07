@@ -8,12 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Figma "Discovery_Fs" heading font has no free web license — Rubik
-        // is the closest available Google Fonts match. Body keeps Heebo,
-        // close to Figma's "Polin" body font at Light weight. CRY-235.
-        display: ['Rubik', 'Heebo', 'Assistant', 'sans-serif'],
-        hebrew: ['Heebo', 'Assistant', 'sans-serif'],
-        sans: ['Heebo', 'Assistant', 'sans-serif'],
+        // Real licensed fonts recovered via CRY-237 (Israel's nouvelle-base
+        // rebuild) — replaces the Rubik/Heebo approximation from CRY-235.
+        display: ['Discovery Fs', 'Heebo', 'Assistant', 'sans-serif'],
+        hebrew: ['Talent FS', 'Heebo', 'Assistant', 'sans-serif'],
+        sans: ['Talent FS', 'Heebo', 'Assistant', 'sans-serif'],
       },
       colors: {
         // Ink typography on white canvas — 900 is the exact Figma "כהה" dark

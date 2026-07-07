@@ -2,18 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;600;700&family=Rubik:wght@300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;600;700&display=swap');
+
+/* Real licensed fonts recovered from Israel's nouvelle-base-israel rebuild
+   (CRY-237) — replaces the Rubik/Heebo approximation tracked since CRY-235. */
+@font-face {
+  font-family: 'Discovery Fs';
+  src: url('/assets/fonts/Discovery_Fs-Light.woff2') format('woff2'),
+       url('/assets/fonts/Discovery_Fs-Light.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Discovery Fs';
+  src: url('/assets/fonts/Discovery_Fs-Medium.woff2') format('woff2'),
+       url('/assets/fonts/Discovery_Fs-Medium.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Talent FS';
+  src: url('/assets/fonts/Talent_FS-Light.woff2') format('woff2'),
+       url('/assets/fonts/Talent_FS-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Talent FS';
+  src: url('/assets/fonts/Talent_FS-Bold.woff2') format('woff2'),
+       url('/assets/fonts/Talent_FS-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── Design tokens ─────────────────────────────────────────────
    Light theme inspired by bitcoin.com: white canvas, bold ink
    typography, bitcoin-orange + sky accents, soft floating cards. */
 :root {
-  --font-hebrew: 'Heebo', 'Assistant', 'Segoe UI', Arial, sans-serif;
-  /* Figma spec uses "Discovery_Fs" for headings — a licensed Hebrew font we
-     don't have files for. Rubik is the closest free Google Fonts match
-     (geometric, heavy weights, Hebrew support). Swap for real files once
-     Israel's zip/design/ font export lands. CRY-235. */
-  --font-display: 'Rubik', 'Heebo', 'Assistant', sans-serif;
+  --font-hebrew: 'Talent FS', 'Heebo', 'Assistant', 'Segoe UI', Arial, sans-serif;
+  /* Real "Discovery_Fs" (headings) recovered via CRY-237 — was Rubik. */
+  --font-display: 'Discovery Fs', 'Heebo', 'Assistant', sans-serif;
 
   /* Canvas & surfaces */
   --color-bg: #ffffff;
